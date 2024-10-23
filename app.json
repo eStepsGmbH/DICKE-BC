@@ -1,0 +1,40 @@
+{
+  "id": "B356F479-876B-4489-B22F-69F702993DC0",
+  "name": "Dicke Food Core",
+  "publisher": "eSteps Informationstechnologien GmbH",
+  "version": "24.0.1.0",
+  "brief": "",
+  "description": "",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "showMyCode": true,
+  "dependencies": [
+    {
+      "id": "6f0293d3-86fc-4ff8-9632-54a580be6546",
+      "name": "ForNAV Core",
+      "publisher": "ForNAV",
+      "version": "1.14.0.0"
+    },
+    {
+      "id": "83326d6d-11f8-49fd-981a-6f266a7c8d81",
+      "name": "Customizable Report Pack",
+      "publisher": "ForNAV",
+      "version": "7.0.0.1"
+    }
+  ],
+  "screenshots": [],
+  "platform": "21.0.0.0",
+  "application": "21.0.0.0",
+  "idRanges": [
+    {
+      "from": 50000,
+      "to": 90000
+    }
+  ],
+  "contextSensitiveHelpUrl": "https://esteps.de/kontakt",
+  "runtime":"13.0",
+  "target": "OnPrem"
+}
