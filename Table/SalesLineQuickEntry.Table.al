@@ -156,9 +156,8 @@ table 50002 "Sales Line Quick Entry"
 
     procedure AddLinesToSalesOrder(var SalesLineQuickEntry: Record "Sales Line Quick Entry"): Boolean
     var
-        ActualLineNo: Integer;
-        SalesCalcDiscountByType: Codeunit "56";
-        SalesDiscYesNo: Codeunit "61";
+        SalesCalcDiscountByType: Codeunit "Sales - Calc Discount By Type";
+        SalesCalcDiscount: Codeunit "Sales-Calc. Discount";
         SalesHeaderUpdated: Boolean;
     begin
         IF NOT SalesHeader.GET(SalesHeader."Document Type"::Order, SalesLineQuickEntry."Document No.") THEN
@@ -167,36 +166,22 @@ table 50002 "Sales Line Quick Entry"
         SalesHeader.TESTFIELD("Sell-to Customer No.");
         SalesHeaderUpdated := FALSE;
 
-        //SalesLine.SETRANGE("Document Type",SalesHeader."Document Type");
-        //SalesLine.SETRANGE("Document No.",SalesHeader."No.");
-        //SalesLine.SETRANGE(Type);
-        //SalesLine.SETRANGE("No.");
-        //IF SalesLine.FINDLAST THEN
-        //ActualLineNo := SalesLine."Line No.";
         IF SalesLineQuickEntry.FINDSET() THEN
             REPEAT
-                //ActualLineNo += 10000;
                 SalesLine.INIT();
                 SalesLine."Document Type" := SalesHeader."Document Type";
                 SalesLine."Document No." := SalesHeader."No.";
-                //DIC01:est.uki >>>
-                //SalesLine."Line No." := ActualLineNo;
                 SalesLine."Line No." := GetNextLineNo(SalesLine);
                 IF SalesLine.INSERT(TRUE) THEN
                     SalesLineQuickEntry.MARK(TRUE);
-                //DIC01:est.uki <<<
                 SalesLine.VALIDATE(Type, SalesLine.Type::Item);
                 SalesLine.VALIDATE("No.", SalesLineQuickEntry."Item No.");
                 IF (SalesLine."Description 2" = '') AND (SalesLineQuickEntry."Description 2" <> '') THEN
                     SalesLine."Description 2" := SalesLineQuickEntry."Description 2";
-                //DIC01:est.uki >>>
                 InsertExtendedText(SalesLine, FALSE);
-                //DIC01:est.uki <<<
                 SalesLine.VALIDATE(Quantity, SalesLineQuickEntry.Quantity);
                 SalesLine.VALIDATE("Unit of Measure Code", SalesLineQuickEntry."Unit of Measure");
                 SalesLine."Minimum Durability" := SalesLineQuickEntry."Minimum Durability";
-
-                //DIC02:est.uki >>>
                 SalesLine."Shipment Date" := SalesLineQuickEntry."Shipment Date";
                 SalesLine."Promised Delivery Date" := SalesLineQuickEntry."Promised Delivery Date";
                 SalesLine.Coli := SalesLineQuickEntry.Coli;
@@ -208,24 +193,13 @@ table 50002 "Sales Line Quick Entry"
                     SalesHeader.MODIFY();
                     SalesHeaderUpdated := TRUE;
                 END;
-                //DIC02:est.uki <<<
-
-                //DIC01:est.uki >>>
-                //    IF SalesLine.INSERT(TRUE) THEN
-                //      SalesLineQuickEntry.MARK(TRUE);
                 IF SalesLine.MODIFY(TRUE) THEN;
-            //DIC01:est.uki <<<
             UNTIL SalesLineQuickEntry.NEXT() = 0;
-
-        //Rabatte berechnen lassen >>>
         SalesLine.SETRANGE("Document Type", SalesHeader."Document Type");
         SalesLine.SETRANGE("Document No.", SalesHeader."No.");
         IF SalesLine.FINDSET() THEN
-            SalesDiscYesNo.OnRunWithoutConfirm(SalesLine);
-
+            SalesCalcDiscount.Run(SalesLine);
         SalesCalcDiscountByType.ResetRecalculateInvoiceDisc(SalesHeader);
-        //Rabatte berechnen lassen <<<
-
         SalesLineQuickEntry.MARKEDONLY(TRUE);
         SalesLineQuickEntry.DELETEALL();
         SalesLineQuickEntry.MARKEDONLY(FALSE);
@@ -238,12 +212,12 @@ table 50002 "Sales Line Quick Entry"
         ItemCrossReference: Record "Item Cross Reference";
         CustomerMandant: Record "Customer";
         Customer: Record "Customer";
+        CustomerItem: Record "Item";
         SalesShipmentHeader: Record "Sales Shipment Header";
         SalesShipmentLine: Record "Sales Shipment Line";
+        SalesHeaderCompany: Record "Sales Header";
         PostedSalesShipments: Page "Posted Sales Shipments";
         ActualLineNo: Integer;
-        SalesHeaderCompany: Record "Sales Header";
-        CustomerItem: Record "Item";
     begin
         IF NOT SalesHeader.GET(SalesHeader."Document Type"::Order, SalesLineQuickEntry."Document No.") THEN
             ERROR(ErrSalesOrderDoesntExist, SalesLineQuickEntry."Document No.");
@@ -256,33 +230,22 @@ table 50002 "Sales Line Quick Entry"
         PostedSalesShipments.LOOKUPMODE(TRUE);
         PostedSalesShipments.SetCompany(SalesHeader."Source Company");
         PostedSalesShipments.SETTABLEVIEW(SalesShipmentHeader);
-        IF PostedSalesShipments.RUNMODAL() = ACTION::LookupOK THEN BEGIN
+        IF PostedSalesShipments.RUNMODAL() = ACTION::LookupOK THEN
             PostedSalesShipments.GETRECORD(SalesShipmentHeader);
-        END;
-
         Rec.SETRANGE("User ID", USERID);
         Rec.SETRANGE("Document No.", SalesHeader."No.");
         IF Rec.FINDLAST() THEN
             ActualLineNo := "Line No.";
-
-        //DIC01:est.uki >>>
         Customer.SETRANGE("No.", SalesHeader."Sell-to Customer No.");
         IF NOT Customer.FINDFIRST() THEN
             ERROR(ErrNoSellToCustomerFound, SalesHeader."Sell-to Customer No.");
-        //DIC01:est.uki <<<
         CustomerMandant.SETFILTER(Name, '=%1', SalesHeader."Source Company");
         IF NOT CustomerMandant.FINDFIRST() THEN
             ERROR(ErrNoCustomerFound, SalesHeader."Source Company");
-
-        //DIC02:est.uki >>>
         SalesHeaderCompany.RESET();
         SalesHeaderCompany.CHANGECOMPANY(SalesHeader."Source Company");
         IF SalesHeaderCompany.GET(SalesHeaderCompany."Document Type"::Order, SalesShipmentHeader."Order No.") THEN;
-
-        //DIC03:est.uki >>>
         CustomerItem.CHANGECOMPANY(SalesHeader."Source Company");
-        //DIC03:est.uki <<<
-
         SalesShipmentLine.CHANGECOMPANY(SalesHeader."Source Company");
         SalesShipmentLine.SETRANGE(SalesShipmentLine."Document No.", SalesShipmentHeader."No.");
         SalesShipmentLine.SETRANGE(Type, SalesShipmentLine.Type::Item);
@@ -298,17 +261,13 @@ table 50002 "Sales Line Quick Entry"
                 ItemCrossReference.SETRANGE("Cross-Reference No.", SalesShipmentLine."No.");
                 IF ItemCrossReference.FINDFIRST() THEN BEGIN
                     Rec.VALIDATE("Item No.", ItemCrossReference."Item No.");
-                    //DIC03:est.uki >>>
                     Rec."Unit of Measure" := ItemCrossReference."Unit of Measure";
-                    //DIC03:est.uki <<<
                 END ELSE BEGIN
-                    //DIC01:est.uki >>>
                     ItemCrossReference.SETRANGE("Cross-Reference Type No.", CustomerMandant."No.");
                     IF ItemCrossReference.FINDFIRST() THEN BEGIN
                         Rec.VALIDATE("Item No.", ItemCrossReference."Item No.");
                         Rec."Unit of Measure" := ItemCrossReference."Unit of Measure";
                     END ELSE BEGIN
-                        //DIC01:est.uki <<<
                         Rec.VALIDATE("Item No.", SalesShipmentLine."No.");
                         Rec."Unit of Measure" := '';
                     END;

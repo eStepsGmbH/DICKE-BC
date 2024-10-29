@@ -1,6 +1,53 @@
 codeunit 50077 "DIC Event Subscriber"
 {
 
+
+    [EventSubscriber(ObjectType::Table, Database::"Sales Shipment Line", 'OnAfterDescriptionSalesLineInsert', '', false, false)]
+    local procedure OnAfterDescriptionSalesLineInsert(var SalesLine: Record "Sales Line"; SalesShipmentLine: Record "Sales Shipment Line"; var NextLineNo: Integer)
+    var
+        SalesHeaderTextLine: Record "Sales Header";
+        SalesOrderTextLine: Record "Sales Line";
+        TempSalesLine: Record "Sales Line";
+        ExtOrderNoTextLine: Label 'Ext. Order No.: %1';
+        CopyTextLinesFromOrder: Boolean; //TODO: Müssen noch gesetzt werden
+        HideShipmentTextLine: Boolean; //TODO: Müssen noch gesetzt werden
+    begin
+        TempSalesLine := SalesLine;
+        IF (HideShipmentTextLine) THEN
+            SalesLine.Description := '';
+        IF CopyTextLinesFromOrder THEN BEGIN
+            //Externe Belenummer als erste Zeile einfügen
+            IF SalesHeaderTextLine.GET(SalesHeaderTextLine."Document Type"::Order, SalesShipmentLine."Order No.") THEN
+                IF SalesHeaderTextLine."External Document No." <> '' THEN BEGIN
+                    SalesLine.INIT();
+                    SalesLine."Line No." := NextLineNo;
+                    SalesLine."Document Type" := TempSalesLine."Document Type";
+                    SalesLine."Document No." := TempSalesLine."Document No.";
+                    SalesLine.Description := STRSUBSTNO(ExtOrderNoTextLine, SalesHeaderTextLine."External Document No.");
+                    SalesLine.INSERT();
+                    NextLineNo := NextLineNo + 10000;
+                END;
+
+            //Textzeilen aus dem Auftrag holen
+            SalesOrderTextLine.RESET();
+            SalesOrderTextLine.SETRANGE("Document Type", SalesOrderTextLine."Document Type"::Order);
+            SalesOrderTextLine.SETRANGE("Document No.", SalesShipmentLine."Order No.");
+            IF SalesOrderTextLine.FINDSET() THEN
+                REPEAT
+                    IF (SalesOrderTextLine.Type = SalesOrderTextLine.Type::" ") THEN BEGIN
+                        SalesLine.INIT();
+                        SalesLine."Line No." := NextLineNo;
+                        SalesLine."Document Type" := TempSalesLine."Document Type";
+                        SalesLine."Document No." := TempSalesLine."Document No.";
+                        SalesLine.Description := SalesOrderTextLine.Description;
+                        SalesLine."Description 2" := SalesOrderTextLine."Description 2";
+                        SalesLine.INSERT();
+                        NextLineNo := NextLineNo + 10000;
+                    END;
+                UNTIL (SalesOrderTextLine.Type <> SalesOrderTextLine.Type::" ") OR (SalesOrderTextLine.NEXT() = 0);
+        END;
+    end;
+
     [EventSubscriber(ObjectType::Table, Database::"Item Journal Line", 'OnAfterCopyItemJnlLineFromSalesLine', '', false, false)]
     local procedure OnAfterCopyItemJnlLineFromSalesLine(var ItemJnlLine: Record "Item Journal Line"; SalesLine: Record "Sales Line")
     begin

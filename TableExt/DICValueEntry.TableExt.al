@@ -1,16 +1,13 @@
-tableextension 50005 tableextension50005 extends "Sales Invoice Line"
+tableextension 50099 "DIC Value Entry" extends "Value Entry"
 {
     //  --------------------------------------------------------------------------------
     //  Dicke
     //  --------------------------------------------------------------------------------
     //  - Feld 50070 "Minimum Durability" hinzugefügt.
     //  - Feld 50078 "Coli" hinzugefügt.
-    //  Feld 11 "Description" von 50 auf 100 Zeichen erweitert.
+    //  - Feld 50079 "Source No. 2" hinzugefügt.
     fields
     {
-
-        //Unsupported feature: Property Modification (Data type) on "Description(Field 11)".
-
         field(50070; "Minimum Durability"; Date)
         {
             Caption = 'Mindesthaltbarkeit';
@@ -18,6 +15,19 @@ tableextension 50005 tableextension50005 extends "Sales Invoice Line"
         field(50078; Coli; Decimal)
         {
             Caption = 'Coli';
+        }
+        field(50079; "Source No. 2"; Code[20])
+        {
+            Caption = 'Herkunftsnr. 2';
+        }
+        field(50080; "Sales Order No."; Code[20])
+        {
+            Caption = 'No.';
+            TableRelation = "Sales Header"."No.";
+        }
+        field(50081; "Shipment Date"; Date)
+        {
+            Caption = 'Shipment Date';
         }
     }
 }

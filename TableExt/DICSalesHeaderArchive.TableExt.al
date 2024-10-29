@@ -1,4 +1,4 @@
-tableextension 50055 tableextension50055 extends "Sales Header Archive"
+tableextension 50055 "DIC Sales Header Archive" extends "Sales Header Archive"
 {
     //  --------------------------------------------------------------------------------
     //  No.   SC-No.    Date     Sign   Description

@@ -1,4 +1,4 @@
-tableextension 50056 tableextension50056 extends "Sales Line Archive"
+tableextension 50056 "DIC Sales Line Archive" extends "Sales Line Archive"
 {
     //  --------------------------------------------------------------------------------
     //  Dicke
@@ -13,12 +13,8 @@ tableextension 50056 tableextension50056 extends "Sales Line Archive"
     //  - 50076 "EDI Receive Date"(EDI empfangen amDate)
     //  - 50077 "Base Unit Quantity (Original)"(Basiseinheiten Menge (Ursprung))
     //  - 50078 "Coli"
-    //  Feld 11 "Description" von 50 auf 100 Zeichen erweitert.
     fields
     {
-
-        //Unsupported feature: Property Modification (Data type) on "Description(Field 11)".
-
         field(50070; "Minimum Durability"; Date)
         {
             Caption = 'Mindesthaltbarkeit';

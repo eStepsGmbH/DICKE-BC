@@ -1,4 +1,4 @@
-tableextension 50006 tableextension50006 extends "Sales Cr.Memo Line"
+tableextension 50005 "DIC Sales Invoice Line" extends "Sales Invoice Line"
 {
     //  --------------------------------------------------------------------------------
     //  Dicke

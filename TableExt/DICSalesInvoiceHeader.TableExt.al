@@ -1,4 +1,4 @@
-tableextension 50004 tableextension50004 extends "Sales Invoice Header"
+tableextension 50004 "DIC Sales Invoice Header" extends "Sales Invoice Header"
 {
     //  --------------------------------------------------------------------------------
     //  Dicke

@@ -1,4 +1,4 @@
-tableextension 50041 tableextension50041 extends "Sales & Receivables Setup"
+tableextension 50041 "DIC Sales & Receivables Setup" extends "Sales & Receivables Setup"
 {
     //  --------------------------------------------------------------------------------
     //  Dicke

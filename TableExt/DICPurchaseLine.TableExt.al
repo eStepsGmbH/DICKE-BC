@@ -1,4 +1,4 @@
-tableextension 50048 tableextension50048 extends "Purchase Line"
+tableextension 50048 "DIC Purchase Line" extends "Purchase Line"
 {
     //  --------------------------------------------------------------------------------
     //  Dicke
@@ -23,68 +23,30 @@ tableextension 50048 tableextension50048 extends "Purchase Line"
     //  DIC01 06.08.2020 17.2.01 Modify function: "Quantity - OnValidate"
     fields
     {
-
-
-        //Unsupported feature: Code Insertion (VariableCollection) on "Quantity(Field 15).OnValidate".
-
-        //trigger (Variable: SalesHdr)()
-        //Parameters and return type have not been exported.
-        //begin
-        /*
-        */
-        //end;
-
-
-        //Unsupported feature: Code Modification on "Quantity(Field 15).OnValidate".
-
-        //trigger OnValidate()
-        //Parameters and return type have not been exported.
-        //>>>> ORIGINAL CODE:
-        //begin
-        /*
-        TestStatusOpen;
-
-        IF "Drop Shipment" AND ("Document Type" <> "Document Type"::Invoice) THEN
-        #4..80
-        END;
-
-        CheckWMS;
-        */
-        //end;
-        //>>>> MODIFIED CODE:
-        //begin
-        /*
-        #1..83
-
-        //DIC01:est.uki >>>
-        IF NOT StatusCheckSuspended THEN BEGIN
-        //DIC01:est.uki <<<
-          // Dicke >>>
-          IF ("Document Type" IN ["Document Type"::Order]) AND ("Special Order") THEN BEGIN
-            IF (xRec.Quantity <> Quantity) OR (xRec."Quantity (Base)" <> "Quantity (Base)") THEN BEGIN
-              IF CONFIRM(Text001_l,TRUE,"Special Order Sales No.") THEN BEGIN
-                SalesHdr.RESET;
-                SalesHdr.GET(SalesHdr."Document Type"::Order,"Special Order Sales No.");
-                IF SalesHdr."VUO Creation Date" <> 0D THEN
-                  ERROR(Text002_l,"Special Order Sales No.");
-                SalesLine.RESET;
-                LOCKTABLE;
-                SalesLine.LOCKTABLE;
-                SalesLine.GET(SalesLine."Document Type"::Order,"Special Order Sales No.","Special Order Sales Line No.");
-                SalesLine."Special Order Purch. Line No." := 0;
-                SalesLine.MODIFY;
-                SalesLine.VALIDATE(Quantity,Rec.Quantity);
-                SalesLine."Special Order Purch. Line No." := "Special Order Sales Line No.";
-                SalesLine.MODIFY;
-              END;
+        modify(Quantity)
+        {
+            trigger OnAfterValidate()
+            begin
+                IF NOT StatusCheckSuspended THEN
+                    IF ("Document Type" IN ["Document Type"::Order]) AND ("Special Order") THEN
+                        IF (xRec.Quantity <> Quantity) OR (xRec."Quantity (Base)" <> "Quantity (Base)") THEN
+                            IF CONFIRM(Text001_l, TRUE, "Special Order Sales No.") THEN BEGIN
+                                SalesHdr.RESET();
+                                SalesHdr.GET(SalesHdr."Document Type"::Order, "Special Order Sales No.");
+                                IF SalesHdr."VUO Creation Date" <> 0D THEN
+                                    ERROR(Text002_l, "Special Order Sales No.");
+                                SalesLine.RESET();
+                                LOCKTABLE();
+                                SalesLine.LOCKTABLE();
+                                SalesLine.GET(SalesLine."Document Type"::Order, "Special Order Sales No.", "Special Order Sales Line No.");
+                                SalesLine."Special Order Purch. Line No." := 0;
+                                SalesLine.MODIFY();
+                                SalesLine.VALIDATE(Quantity, Rec.Quantity);
+                                SalesLine."Special Order Purch. Line No." := "Special Order Sales Line No.";
+                                SalesLine.MODIFY();
+                            END;
             END;
-          END;
-          // Dicke <<<
-        //DIC01:est.uki >>>
-        END;
-        //DIC01:est.uki <<<
-        */
-        //end;
+        }
         field(50070; "VIO Creation Date"; Date)
         {
             Caption = 'VIO erstellt am';
@@ -114,18 +76,8 @@ tableextension 50048 tableextension50048 extends "Purchase Line"
         }
     }
 
-    procedure ClearPurchaseHeader()
-    begin
-        //CLEAR(PurchHeader);
-    end;
-
-    local procedure "**Dicke**"()
-    begin
-    end;
-
     procedure DeactivateSpecialOrderInfos(var PurchaseLine_par: Record "Purchase Line")
     begin
-        // Dicke >>>
         IF (PurchaseLine_par."Document Type" IN [PurchaseLine_par."Document Type"::Order]) AND (PurchaseLine_par."Special Order") THEN BEGIN
             PurchaseLine_par.LOCKTABLE();
             PurchaseLine_par."Special Order Sales Line No." := 0;
@@ -135,19 +87,12 @@ tableextension 50048 tableextension50048 extends "Purchase Line"
                 PurchaseLine_par.MODIFY();
             END;
         END;
-        // Dicke <<<
     end;
-
-    //Unsupported feature: Property Deletion (PasteIsValid).
-
 
     var
         SalesHdr: Record "Sales Header";
         SalesLine: Record "Sales Line";
-
-    var
         Text001_l: Label 'Diese Bestellzeile gehört zu Auftrag %1. Möchten Sie die Menge auch in diesem Auftrag anpassen!';
         Text002_l: Label 'Die Menge kann im Auftrag %1 nicht angepasst werden, da bereits eine VUO-Datei erstellt wurde!';
-        SkipQuestion: Integer;
 }
 

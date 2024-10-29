@@ -1,4 +1,4 @@
-tableextension 50011 tableextension50011 extends "Purch. Cr. Memo Line"
+tableextension 50011 "DIC Purch. Cr. Memo Line" extends "Purch. Cr. Memo Line"
 {
     //  --------------------------------------------------------------------------------
     //  Dicke
