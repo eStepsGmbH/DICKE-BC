@@ -81,12 +81,10 @@ page 50004 "Sales Line Quick Entry"
                     ApplicationArea = Basic, Suite;
                     Caption = 'Add Lines';
                     Image = ReleaseDoc;
-                    //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
-                    //PromotedCategory = New;
-                    //The property 'PromotedIsBig' can only be set if the property 'Promoted' is set to 'true'
-                    //PromotedIsBig = true;
-                    //The property 'PromotedOnly' can only be set if the property 'Promoted' is set to 'true'
-                    //PromotedOnly = true;
+                    Promoted = true;
+                    PromotedCategory = New;
+                    PromotedIsBig = true;
+                    PromotedOnly = true;
                     ShortCutKey = 'F12';
                     ToolTip = 'Hiermit können Sie die erfassten Zeilen in den VK-Auftrag übernehmen.';
 
@@ -100,8 +98,8 @@ page 50004 "Sales Line Quick Entry"
                 {
                     Caption = 'Referenzen auswählen';
                     Image = Change;
-                    //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
-                    //PromotedCategory = Process;
+                    PromotedCategory = Process;
+                    Promoted = true;
                     ShortCutKey = 'Ctrl+F12';
 
                     trigger OnAction()
@@ -140,8 +138,6 @@ page 50004 "Sales Line Quick Entry"
     var
         SalesHeader: Record "Sales Header";
         SalesLineRefQuickEntry: Page "50005";
-        CustomerNo: Code[20];
-        ShipmentCode: Code[10];
 
     local procedure SetPageCaption(): Text[100]
     begin

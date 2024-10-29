@@ -98,7 +98,7 @@ tableextension 50045 "DIC Sales Header" extends "Sales Header"
     }
 
     var
-        HeaderText: Record "Dicke Header Text";
+        HeaderText: Record "DIC Header Text";
         ExtText: Record "Extended Text Line";
         StanText: Record "Standard Text";
         CompanySelectErr: Label 'Own Company can not selected!';

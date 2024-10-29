@@ -1,4 +1,4 @@
-table 50000 "Dicke Header Text"
+table 50000 "DIC Header Text"
 {
     fields
     {

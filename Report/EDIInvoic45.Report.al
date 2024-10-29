@@ -177,10 +177,9 @@ report 50091 "EDI Invoic 45"
     end;
 
     var
-        StringBuilder_dn: DotNet StringBuilder;
-        String_dn: DotNet String;
-        DateTime_dn: DotNet DateTime;
-        StreamWriter_dn: DotNet StreamWriter;
+        StringBuilder_dn: TextBuilder;
+        DateTime_dn: DateTime;
+        StreamWriter_dn: Codeunit DotNet_StreamWriter;
         TextLine: Text;
         ILNIdSender: Text[35];
         ILNIdReceiver: Text[35];
@@ -228,7 +227,6 @@ report 50091 "EDI Invoic 45"
 
     local procedure GetHHMM(): Text
     begin
-
         DateTime_dn := DateTime_dn.Now;
         EXIT(DateTime_dn.ToString('hhmm'));
     end;

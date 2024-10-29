@@ -307,7 +307,7 @@ report 50077 "Import GUO Daten"
         NewWeight_ltxt: Text[10];
         NewWeight_ldec: Decimal;
         InsertNewLine_lbool: Boolean;
-        SalesDisc_lcu: Codeunit "61";
+        SalesDisc_lcu: Codeunit "60";
         SavedLineDiscount_ldec: Decimal;
         IsNewLine: Boolean;
         PurchaseLine: Record "Purchase Line";
@@ -485,7 +485,7 @@ report 50077 "Import GUO Daten"
                             //DIC01:est.uk <<<
 
                             // Rechnungsrabatt neu berechnen (Wie Aufruf der Funktion "Rechnungsrabatt berechen" im VK-Auftragsformular)
-                            SalesDisc_lcu.OnRunWithoutConfirm(SalesLine_lrec);
+                            SalesDisc_lcu.Run(SalesLine_lrec);
                         END;
 
                         IF SalesLineOriginalValue_rec."Base Unit of Measure Code" = 'KG' THEN BEGIN
@@ -518,7 +518,7 @@ report 50077 "Import GUO Daten"
                             //DIC01:est.uk <<<
 
                             // Rechnungsrabatt neu berechnen (Wie Aufruf der Funktion "Rechnungsrabatt berechen" im VK-Auftragsformular)
-                            SalesDisc_lcu.OnRunWithoutConfirm(SalesLine_lrec);
+                            SalesDisc_lcu.Run(SalesLine_lrec);
                         END;
 
                         // Zeilenrabatt % ggf. erneut eintragen
