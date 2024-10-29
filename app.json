@@ -10,20 +10,7 @@
   "help": "",
   "url": "",
   "logo": "",
-  "dependencies": [
-    {
-      "id": "6f0293d3-86fc-4ff8-9632-54a580be6546",
-      "name": "ForNAV Core",
-      "publisher": "ForNAV",
-      "version": "1.14.0.0"
-    },
-    {
-      "id": "83326d6d-11f8-49fd-981a-6f266a7c8d81",
-      "name": "Customizable Report Pack",
-      "publisher": "ForNAV",
-      "version": "7.0.0.1"
-    }
-  ],
+  "dependencies": [],
   "screenshots": [],
   "platform": "21.0.0.0",
   "application": "21.0.0.0",
@@ -32,6 +19,9 @@
       "from": 50000,
       "to": 90000
     }
+  ],
+  "features": [
+    "TranslationFile"
   ],
   "contextSensitiveHelpUrl": "https://esteps.de/kontakt",
   "runtime":"13.0",

@@ -536,7 +536,7 @@ report 50093 "EDI Orders 45"
         + Item_lrec.GTIN + ';' //500-04
         + Item_lrec."Vendor Item No." + ';' //500-05
         + ConvertItemNo(Item_lrec."No.") + ';' //500-06
-        + Item_lrec."Product Group Code" + ';' //500-07
+        // + Item_lrec."Product Group Code" + ';' //500-07 TODO: REMOVED
         + SalesLine_par.Description + ';' //500-08
         + SalesLine_par."Description 2" + ';' //500-09
         + ';;' //500-10 - 500-11

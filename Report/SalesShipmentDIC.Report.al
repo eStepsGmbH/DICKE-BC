@@ -678,7 +678,7 @@ report 50080 "Sales - Shipment DIC"
 
     var
         Text002: Label 'Shipment %1', Comment = '%1 = Document No.';
-        SalesPurchPerson: Record "13";
+        SalesPurchPerson: Record "Salesperson/Purchaser";
         CompanyInfo: Record "Company Information";
         CompanyInfo1: Record "Company Information";
         CompanyInfo2: Record "Company Information";
@@ -692,7 +692,7 @@ report 50080 "Sales - Shipment DIC"
         PostedAsmLine: Record "911";
         RespCenter: Record "5714";
         ItemTrackingAppendix: Report "6521";
-        FormatAdressCodeunit: Codeunit "Format Address";
+        FormatAddr: Codeunit "Format Address";
         FormatDocument: Codeunit "Format Document";
         SegManagement: Codeunit SegManagement;
         ItemTrackingDocMgt: Codeunit "Item Tracking Doc. Management";

@@ -799,7 +799,7 @@ report 50075 "Sales - Credit Memo DIC"
 
             trigger OnAfterGetRecord()
             begin
-                CurrReport.LANGUAGE := Language.GetLanguageID("Sales Cr.Memo Header"."Language Code");
+                // CurrReport.Language := "Sales Cr.Memo Header"."Language Code"; TODO: CHECK
 
                 FormatAddressFields("Sales Cr.Memo Header");
                 FormatDocumentFields("Sales Cr.Memo Header");
@@ -891,15 +891,15 @@ report 50075 "Sales - Credit Memo DIC"
     var
         Text003: Label '(Applies to %1 %2)';
         PageCaptionCap: Label 'Page %1 of %2';
-        GLSetup: Record "98";
+        GLSetup: Record "General Ledger Setup";
         RespCenter: Record "5714";
         SalesSetup: Record "Sales & Receivables Setup";
-        SalesPurchPerson: Record "13";
+        SalesPurchPerson: Record "Salesperson/Purchaser";
         CompanyInfo: Record "Company Information";
         CompanyInfo1: Record "Company Information";
         CompanyInfo2: Record "Company Information";
         CompanyInfo3: Record "Company Information";
-        VATAmountLine: Record "290" temporary;
+        VATAmountLine: Record "VAT Amount Line" temporary;
         VATClause: Record "560";
         DimSetEntry1: Record "Dimension Set Entry";
         DimSetEntry2: Record "Dimension Set Entry";

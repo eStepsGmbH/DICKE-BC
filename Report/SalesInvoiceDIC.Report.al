@@ -944,7 +944,7 @@ report 50074 "Sales - Invoice DIC"
 
             trigger OnAfterGetRecord()
             begin
-                CurrReport.LANGUAGE := Language.GetLanguageID("Language Code");
+                //CurrReport.LANGUAGE := Language.GetLanguageID("Language Code"); TODO: CHECK
 
                 FormatAddressFields("Sales Invoice Header");
                 FormatDocumentFields("Sales Invoice Header");
@@ -960,12 +960,12 @@ report 50074 "Sales - Invoice DIC"
                     IF NOT CurrReport.PREVIEW THEN BEGIN
                         IF "Bill-to Contact No." <> '' THEN
                             SegManagement.LogDocument(
-                              4, "No.", 0, 0, DATABASE::Contact, "Bill-to Contact No.", "Salesperson Code",
-                              "Campaign No.", "Posting Description", '')
+                            4, "No.", 0, 0, DATABASE::Contact, "Bill-to Contact No.", "Salesperson Code",
+                            "Campaign No.", "Posting Description", '')
                         ELSE
                             SegManagement.LogDocument(
-                              4, "No.", 0, 0, DATABASE::Customer, "Bill-to Customer No.", "Salesperson Code",
-                              "Campaign No.", "Posting Description", '');
+                            4, "No.", 0, 0, DATABASE::Customer, "Bill-to Customer No.", "Salesperson Code",
+                            "Campaign No.", "Posting Description", '');
                     END;
             end;
         }
@@ -1066,10 +1066,10 @@ report 50074 "Sales - Invoice DIC"
     var
         Text004: Label 'Invoice %1', Comment = '%1 = Document No.';
         PageCaptionCap: Label 'Page %1 of %2';
-        GLSetup: Record "98";
-        ShipmentMethod: Record "10";
-        PaymentTerms: Record "3";
-        SalesPurchPerson: Record "13";
+        GLSetup: Record "General Ledger Setup";
+        ShipmentMethod: Record "Shipment Method";
+        PaymentTerms: Record "Payment Terms";
+        SalesPurchPerson: Record "Salesperson/Purchaser";
         CompanyInfo: Record "Company Information";
         CompanyInfo1: Record "Company Information";
         CompanyInfo2: Record "Company Information";
@@ -1078,7 +1078,7 @@ report 50074 "Sales - Invoice DIC"
         SalesSetup: Record "Sales & Receivables Setup";
         SalesShipmentBuffer: Record "7190" temporary;
         Cust: Record "Customer";
-        VATAmountLine: Record "290" temporary;
+        VATAmountLine: Record "VAT Amount Line" temporary;
         DimSetEntry1: Record "Dimension Set Entry";
         DimSetEntry2: Record "Dimension Set Entry";
         RespCenter: Record "5714";
@@ -1089,7 +1089,7 @@ report 50074 "Sales - Invoice DIC"
         TempLineFeeNoteOnReportHist: Record "1053" temporary;
         FormatAddr: Codeunit "Format Address";
         FormatDocument: Codeunit "Format Document";
-        SegManagement: Codeunit "5051";
+        SegManagement: Codeunit SegManagement;
         PostedShipmentDate: Date;
         CustAddr: array[8] of Text[50];
         ShipToAddr: array[8] of Text[50];

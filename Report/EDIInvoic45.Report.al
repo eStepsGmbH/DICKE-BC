@@ -680,7 +680,7 @@ report 50091 "EDI Invoic 45"
         + Item_lrec.GTIN + ';' //500-04
         + Item_lrec."No." + ';' //500-05
         + ';' //500-06
-        + Item_lrec."Product Group Code" + ';' //500-07
+        //+ Item_lrec."Product Group Code" + ';' //500-07 TODO: REMOVED
         + SalesInvoiceLine_par.Description + ';' //500-08
         + SalesInvoiceLine_par."Description 2" + ';' //500-09
         + ';;' //500-10 - 500-11
@@ -689,7 +689,7 @@ report 50091 "EDI Invoic 45"
         + CONVERTSTR(FORMAT(SalesInvoiceLine_par."VAT %", 0, '<Sign><Integer><Decimals><Comma,,>'), ',', '.') + ';' //500-15
         + CONVERTSTR(FORMAT(SalesInvoiceLine_par."Unit Price", 0, '<Sign><Integer><Decimals><Comma,,>'), ',', '.') + ';' //500-16
         + ';;;;;' //500-17 - 500-21
-        + UnitOfMeasureCode + ';' // 500-22 TODO: 'PCE'= Stück, 'KGM' = Kilogramm
+        + UnitOfMeasureCode + ';' // 500-22 'PCE'= Stück, 'KGM' = Kilogramm
         //+  CONVERTSTR(FORMAT(SalesInvoiceLine_par.Amount,0,'<Sign><Integer><Decimals><Comma,,>'),',','.')  + ';' //500-23
         + CONVERTSTR(FORMAT(SalesInvoiceLine_par."Line Amount", 0, '<Sign><Integer><Decimals><Comma,,>'), ',', '.') + ';' //500-23
         + ';' //500-24
@@ -1039,7 +1039,7 @@ UNTIL SalesInvoiceLine.NEXT = 0;
         + Item_lrec.GTIN + ';' //500-04
         + Item_lrec."No." + ';' //500-05
         + ';' //500-06
-        + Item_lrec."Product Group Code" + ';' //500-07
+        // + Item_lrec."Product Group Code" + ';' //500-07 TODO: REMOVED
         + SalesCrMemoLine_par.Description + ';' //500-08
         + SalesCrMemoLine_par."Description 2" + ';' //500-09
         + ';;' //500-10 - 500-11
@@ -1048,7 +1048,7 @@ UNTIL SalesInvoiceLine.NEXT = 0;
         + CONVERTSTR(FORMAT(SalesCrMemoLine_par."VAT %", 0, '<Sign><Integer><Decimals><Comma,,>'), ',', '.') + ';' //500-15
         + CONVERTSTR(FORMAT(SalesCrMemoLine_par."Unit Price", 0, '<Sign><Integer><Decimals><Comma,,>'), ',', '.') + ';' //500-16
         + ';;;;;' //500-17 - 500-21
-        + UnitOfMeasureCode + ';' // 500-22 TODO: 'PCE'= Stück, 'KGM' = Kilogramm
+        + UnitOfMeasureCode + ';' // 500-22 'PCE'= Stück, 'KGM' = Kilogramm
         + CONVERTSTR(FORMAT(SalesCrMemoLine_par."Line Amount", 0, '<Sign><Integer><Decimals><Comma,,>'), ',', '.') + ';' //500-23
         + ';' //500-24
         + CONVERTSTR(FORMAT(SalesCrMemoLine_par."Line Discount Amount", 0, '<Sign><Integer><Decimals><Comma,,>'), ',', '.') + ';' //500-25
