@@ -127,12 +127,12 @@ tableextension 50048 tableextension50048 extends "Purchase Line"
     begin
         // Dicke >>>
         IF (PurchaseLine_par."Document Type" IN [PurchaseLine_par."Document Type"::Order]) AND (PurchaseLine_par."Special Order") THEN BEGIN
-            PurchaseLine_par.LOCKTABLE;
+            PurchaseLine_par.LOCKTABLE();
             PurchaseLine_par."Special Order Sales Line No." := 0;
-            IF PurchaseLine_par.MODIFY THEN BEGIN
+            IF PurchaseLine_par.MODIFY() THEN BEGIN
                 PurchaseLine_par."Special Order" := FALSE;
                 PurchaseLine_par."Purchasing Code" := '';
-                PurchaseLine_par.MODIFY;
+                PurchaseLine_par.MODIFY();
             END;
         END;
         // Dicke <<<

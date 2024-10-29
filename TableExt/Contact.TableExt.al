@@ -21,9 +21,9 @@ tableextension 50053 tableextension50053 extends Contact
                 Customer: Record "18";
                 Vendor: Record "23";
             begin
-                ContactBusinessRelation.RESET;
+                ContactBusinessRelation.RESET();
                 ContactBusinessRelation.SETRANGE("Contact No.", "Company No.");
-                IF ContactBusinessRelation.FINDFIRST THEN
+                IF ContactBusinessRelation.FINDFIRST() THEN
                     IF ContactBusinessRelation."Link to Table" = ContactBusinessRelation."Link to Table"::Customer THEN BEGIN
                         IF Customer.GET(ContactBusinessRelation."No.") THEN
                             PAGE.RUN(21, Customer)
@@ -45,15 +45,15 @@ tableextension 50053 tableextension50053 extends Contact
         ContactBusinessRelation: Record "5054";
     begin
         IF Contact.GET("Contact No.") THEN BEGIN
-            ContactBusinessRelation.RESET;
+            ContactBusinessRelation.RESET();
             IF Contact.Type = Contact.Type::Company THEN BEGIN
                 ContactBusinessRelation.SETRANGE("Contact No.", "Contact No.");
-                IF ContactBusinessRelation.FINDFIRST THEN
+                IF ContactBusinessRelation.FINDFIRST() THEN
                     EXIT(ContactBusinessRelation."No.");
             END;
             IF Contact.Type = Contact.Type::Person THEN BEGIN
                 ContactBusinessRelation.SETRANGE("Contact No.", Contact."Company No.");
-                IF ContactBusinessRelation.FINDFIRST THEN
+                IF ContactBusinessRelation.FINDFIRST() THEN
                     EXIT(ContactBusinessRelation."No.");
             END;
         END;

@@ -345,7 +345,7 @@ page 50070 "Sales Invoice Lines DIC"
 
     trigger OnAfterGetRecord()
     begin
-        IF IsFirstDocLine THEN
+        IF IsFirstDocLine() THEN
             DocNo := Rec."Document No."
         ELSE
             DocNo := '';
@@ -364,7 +364,7 @@ page 50070 "Sales Invoice Lines DIC"
     var
         SalesInvLine: Record "113";
     begin
-        TempSalesInvLine.RESET;
+        TempSalesInvLine.RESET();
         TempSalesInvLine.COPYFILTERS(Rec);
         TempSalesInvLine.SETRANGE("Document No.", Rec."Document No.");
         IF NOT TempSalesInvLine.FIND('-') THEN BEGIN
@@ -372,7 +372,7 @@ page 50070 "Sales Invoice Lines DIC"
             SalesInvLine.SETRANGE("Document No.", Rec."Document No.");
             SalesInvLine.FIND('-');
             TempSalesInvLine := SalesInvLine;
-            TempSalesInvLine.INSERT;
+            TempSalesInvLine.INSERT();
         END;
         EXIT(Rec."Line No." = TempSalesInvLine."Line No.");
     end;
