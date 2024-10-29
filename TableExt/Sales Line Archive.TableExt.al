@@ -27,17 +27,6 @@ tableextension 50056 tableextension50056 extends "Sales Line Archive"
         {
             Caption = 'Unit of Measure Code';
             Editable = false;
-            TableRelation = IF (Type = CONST(Item)) "Item Unit of Measure".Code WHERE("Item No." = FIELD("No."))
-            ELSE IF (Type = CONST(Resource)) "Resource Unit of Measure".Code WHERE("Resource No." = FIELD("No."))
-            ELSE
-            "Unit of Measure";
-
-            trigger OnValidate()
-            var
-                UnitOfMeasureTranslation: Record "Unit of Measure Translation";
-                ResUnitofMeasure: Record "Resource Unit of Measure";
-            begin
-            end;
         }
         field(50072; "Base Unit Price"; Decimal)
         {

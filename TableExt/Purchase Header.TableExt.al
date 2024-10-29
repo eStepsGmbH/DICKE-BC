@@ -137,7 +137,7 @@ tableextension 50047 tableextension50047 extends "Purchase Header"
         TESTFIELD(Status, Status::Open);
 
         //UpdateShipToAddress >>>
-        IF IsCreditDocType THEN
+        IF IsCreditDocType() THEN
             EXIT;
 
         "Location Code" := NewLocationCode;
@@ -150,7 +150,7 @@ tableextension 50047 tableextension50047 extends "Purchase Header"
         END;
 
         IF ("Location Code" = '') THEN BEGIN
-            CompanyInfo.GET;
+            CompanyInfo.GET();
             "Ship-to Code" := '';
             SetShipToAddress(
               CompanyInfo."Ship-to Name", CompanyInfo."Ship-to Name 2", CompanyInfo."Ship-to Address", CompanyInfo."Ship-to Address 2",
@@ -160,7 +160,7 @@ tableextension 50047 tableextension50047 extends "Purchase Header"
         END;
 
         IF "Location Code" = '' THEN BEGIN
-            IF InvtSetup.GET THEN
+            IF InvtSetup.GET() THEN
                 "Inbound Whse. Handling Time" := InvtSetup."Inbound Whse. Handling Time";
         END ELSE BEGIN
             IF Location.GET("Location Code") THEN;
@@ -177,12 +177,12 @@ tableextension 50047 tableextension50047 extends "Purchase Header"
         IF PurchaseLine_lrec.FINDFIRST() THEN
             REPEAT
                 //Bestellzeile merken
-                PurchaseLine_tmp.INIT;
+                PurchaseLine_tmp.INIT();
                 PurchaseLine_tmp.TRANSFERFIELDS(PurchaseLine_lrec, TRUE);
                 PurchaseLine_tmp.INSERT();
 
                 //zugehörige Auftragszeile holen
-                SalesLine_lrec.RESET;
+                SalesLine_lrec.RESET();
                 SalesLine_lrec.SETRANGE("Document Type", SalesLine_lrec."Document Type"::Order);
                 SalesLine_lrec.SETRANGE("Document No.", PurchaseLine_lrec."Special Order Sales No.");
                 SalesLine_lrec.SETRANGE("Line No.", PurchaseLine_lrec."Special Order Sales Line No.");
@@ -190,7 +190,7 @@ tableextension 50047 tableextension50047 extends "Purchase Header"
 
                 //und falls gefunden merken
                 IF SalesLine_lrec.FINDFIRST() THEN BEGIN
-                    SalesLine_tmp.INIT;
+                    SalesLine_tmp.INIT();
                     SalesLine_tmp.TRANSFERFIELDS(SalesLine_lrec, TRUE);
                     SalesLine_tmp.INSERT();
                     SalesLine_lrec.DeactivateSpecialOrderInfos(SalesLine_lrec);
@@ -208,7 +208,7 @@ tableextension 50047 tableextension50047 extends "Purchase Header"
                 PurchaseLine_lrec."Purchasing Code" := PurchaseLine_tmp."Purchasing Code";
                 PurchaseLine_lrec.MODIFY();
 
-            UNTIL PurchaseLine_lrec.NEXT = 0;
+            UNTIL PurchaseLine_lrec.NEXT() = 0;
 
         //ChangeLocationInLines <<<
     end;

@@ -93,7 +93,7 @@ page 50004 "Sales Line Quick Entry"
                     trigger OnAction()
                     begin
                         IF Rec.AddLinesToSalesOrder(Rec) THEN
-                            CurrPage.CLOSE;
+                            CurrPage.CLOSE();
                     end;
                 }
                 action("Referenzen auswählen")
@@ -107,7 +107,7 @@ page 50004 "Sales Line Quick Entry"
                     trigger OnAction()
                     begin
                         SalesLineRefQuickEntry.SetSalesHeader(SalesHeader);
-                        SalesLineRefQuickEntry.RUNMODAL;
+                        SalesLineRefQuickEntry.RUNMODAL();
                         CLEAR(SalesLineRefQuickEntry);
                     end;
                 }
@@ -123,7 +123,7 @@ page 50004 "Sales Line Quick Entry"
                     trigger OnAction()
                     begin
                         IF Rec.AddShipLinesFromOtherCompany(Rec) THEN
-                            CurrPage.UPDATE;
+                            CurrPage.UPDATE();
                     end;
                 }
             }

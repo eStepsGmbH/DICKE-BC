@@ -69,15 +69,15 @@ page 50005 "Sales Line Ref. Quick Entry"
                     trigger OnAction()
                     begin
                         Rec.SETRANGE(Selected, TRUE);
-                        IF Rec.FINDSET THEN BEGIN
+                        IF Rec.FINDSET() THEN BEGIN
                             SalesLineQuickEntry.SETRANGE("User ID", USERID);
                             SalesLineQuickEntry.SETRANGE("Document No.", SalesHeader."No.");
-                            IF SalesLineQuickEntry.FINDLAST THEN
+                            IF SalesLineQuickEntry.FINDLAST() THEN
                                 ActualLineNo := SalesLineQuickEntry."Line No.";
                             REPEAT
                                 ActualLineNo += 10000;
                                 Item.GET(Rec."Item No.");
-                                SalesLineQuickEntry.INIT;
+                                SalesLineQuickEntry.INIT();
                                 SalesLineQuickEntry."Document No." := SalesHeader."No.";
                                 SalesLineQuickEntry."User ID" := USERID;
                                 SalesLineQuickEntry."Line No." := ActualLineNo;
@@ -87,10 +87,10 @@ page 50005 "Sales Line Ref. Quick Entry"
                                 SalesLineQuickEntry.Quantity := 1;
                                 SalesLineQuickEntry."Unit of Measure" := Rec."Unit of Measure";
                                 SalesLineQuickEntry."Customer No." := SalesHeader."Sell-to Customer No.";
-                                SalesLineQuickEntry.INSERT;
-                            UNTIL Rec.NEXT = 0;
+                                SalesLineQuickEntry.INSERT();
+                            UNTIL Rec.NEXT() = 0;
                         END;
-                        CurrPage.CLOSE;
+                        CurrPage.CLOSE();
                     end;
                 }
             }
@@ -102,11 +102,11 @@ page 50005 "Sales Line Ref. Quick Entry"
 
         ItemCrossReference.SETRANGE("Cross-Reference Type", ItemCrossReference."Cross-Reference Type"::Customer);
         ItemCrossReference.SETRANGE("Cross-Reference Type No.", SalesHeader."Sell-to Customer No.");
-        IF ItemCrossReference.FINDSET THEN
+        IF ItemCrossReference.FINDSET() THEN
             REPEAT
                 Rec := ItemCrossReference;
-                Rec.INSERT;
-            UNTIL ItemCrossReference.NEXT = 0;
+                Rec.INSERT();
+            UNTIL ItemCrossReference.NEXT() = 0;
 
         CurrPage.UPDATE(FALSE);
     end;

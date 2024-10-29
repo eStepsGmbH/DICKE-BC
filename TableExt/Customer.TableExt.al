@@ -1,4 +1,4 @@
-tableextension 50029 tableextension50029 extends Customer
+tableextension 50029 "DIC Customer" extends Customer
 {
     //  ---------------------------------------------------------------------------
     //  Sievers-SNC GmbH & Co. KG
@@ -91,42 +91,5 @@ tableextension 50029 tableextension50029 extends Customer
             OptionMembers = "No Information","Natural Person",Company;
         }
     }
-
-
-    //Unsupported feature: Code Modification on "OnInsert".
-
-    //trigger OnInsert()
-    //>>>> ORIGINAL CODE:
-    //begin
-    /*
-    IF "No." = '' THEN
-      IF DocumentNoVisibility.CustomerNoSeriesIsDefault THEN BEGIN
-        SalesSetup.GET;
-        NoSeriesMgt.InitSeries(SalesSetup."Customer Nos.",xRec."No. Series",0D,"No.","No. Series");
-      END;
-    IF "Invoice Disc. Code" = '' THEN
-      "Invoice Disc. Code" := "No.";
-
-    #9..11
-    DimMgt.UpdateDefaultDim(
-      DATABASE::Customer,"No.",
-      "Global Dimension 1 Code","Global Dimension 2 Code");
-    */
-    //end;
-    //>>>> MODIFIED CODE:
-    //begin
-    /*
-    IF "No." = '' THEN BEGIN
-      SalesSetup.GET;
-      SalesSetup.TESTFIELD("Customer Nos.");
-      NoSeriesMgt.InitSeries(SalesSetup."Customer Nos.",xRec."No. Series",0D,"No.","No. Series");
-    END;
-
-    #6..14
-    */
-    //end;
-
-    //Unsupported feature: Property Modification (Fields) on "DropDown(FieldGroup 1)".
-
 }
 
