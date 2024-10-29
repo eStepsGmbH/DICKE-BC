@@ -8,7 +8,7 @@ pageextension 50118 pageextension50118 extends "Purch. Cr. Memo Subform"
     {
         addafter("Gross Weight")
         {
-            field("Minimum Durability"; "Minimum Durability")
+            field("Minimum Durability"; Rec."Minimum Durability")
             {
             }
         }

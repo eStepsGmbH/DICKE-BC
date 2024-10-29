@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 pageextension 50016 pageextension50016 extends "Posted Sales Cr. Memo Subform"
 {
     //  --------------------------------------------------------------------------------
@@ -10,10 +11,10 @@ pageextension 50016 pageextension50016 extends "Posted Sales Cr. Memo Subform"
     {
         addafter("Net Weight")
         {
-            field("Minimum Durability"; "Minimum Durability")
+            field("Minimum Durability"; Rec."Minimum Durability")
             {
             }
-            field(Coli; Coli)
+            field(Coli; Rec.Coli)
             {
                 DecimalPlaces = 0 : 0;
             }
@@ -21,3 +22,5 @@ pageextension 50016 pageextension50016 extends "Posted Sales Cr. Memo Subform"
     }
 }
 
+
+#pragma implicitwith restore

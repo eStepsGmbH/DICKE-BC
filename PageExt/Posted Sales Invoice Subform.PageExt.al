@@ -10,10 +10,10 @@ pageextension 50014 pageextension50014 extends "Posted Sales Invoice Subform"
     {
         addafter("Net Weight")
         {
-            field("Minimum Durability"; "Minimum Durability")
+            field("Minimum Durability"; Rec."Minimum Durability")
             {
             }
-            field(Coli; Coli)
+            field(Coli; Rec.Coli)
             {
                 DecimalPlaces = 0 : 0;
             }

@@ -7,7 +7,7 @@ pageextension 50053 pageextension50053 extends "Purchases & Payables Setup"
             group(Dicke)
             {
                 Caption = 'Dicke';
-                field("Check Post Order In Base Unit"; "Check Post Order In Base Unit")
+                field("Check Post Order In Base Unit"; Rec."Check Post Order In Base Unit")
                 {
                 }
             }

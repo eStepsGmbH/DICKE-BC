@@ -29,39 +29,39 @@ pageextension 50052 pageextension50052 extends "Sales Order Subform"
         }
         addafter(Control1)
         {
-            field("Minimum Durability"; "Minimum Durability")
+            field("Minimum Durability"; Rec."Minimum Durability")
             {
             }
-            field(Coli; Coli)
+            field(Coli; Rec.Coli)
             {
                 DecimalPlaces = 0 : 0;
             }
-            field("Base Unit of Measure Code"; "Base Unit of Measure Code")
+            field("Base Unit of Measure Code"; Rec."Base Unit of Measure Code")
             {
             }
-            field("Base Unit Price"; "Base Unit Price")
+            field("Base Unit Price"; Rec."Base Unit Price")
             {
             }
-            field("Base Unit Quantity"; "Base Unit Quantity")
+            field("Base Unit Quantity"; Rec."Base Unit Quantity")
             {
             }
-            field("GUO Receive Date"; "GUO Receive Date")
+            field("GUO Receive Date"; Rec."GUO Receive Date")
             {
             }
-            field("EDI Send Date"; "EDI Send Date")
+            field("EDI Send Date"; Rec."EDI Send Date")
             {
             }
-            field("EDI Receive Date"; "EDI Receive Date")
+            field("EDI Receive Date"; Rec."EDI Receive Date")
             {
             }
-            field("Base Unit Quantity (Original)"; "Base Unit Quantity (Original)")
+            field("Base Unit Quantity (Original)"; Rec."Base Unit Quantity (Original)")
             {
             }
-            field("Special Order Purchase No."; "Special Order Purchase No.")
+            field("Special Order Purchase No."; Rec."Special Order Purchase No.")
             {
                 Caption = 'Special Order Purchase No.';
             }
-            field("External Document Pos. No."; "External Document Pos. No.")
+            field("External Document Pos. No."; Rec."External Document Pos. No.")
             {
                 Visible = false;
             }

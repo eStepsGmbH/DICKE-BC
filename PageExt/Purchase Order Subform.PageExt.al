@@ -11,20 +11,20 @@ pageextension 50066 pageextension50066 extends "Purchase Order Subform"
     {
         addafter("Net Weight")
         {
-            field("Minimum Durability"; "Minimum Durability")
+            field("Minimum Durability"; Rec."Minimum Durability")
             {
             }
-            field("VIO Creation Date"; "VIO Creation Date")
+            field("VIO Creation Date"; Rec."VIO Creation Date")
             {
             }
-            field(VIO; VIO)
+            field(VIO; Rec.VIO)
             {
             }
-            field("Special Order Sales No."; "Special Order Sales No.")
+            field("Special Order Sales No."; Rec."Special Order Sales No.")
             {
                 Visible = false;
             }
-            field("Special Order Sales Line No."; "Special Order Sales Line No.")
+            field("Special Order Sales Line No."; Rec."Special Order Sales Line No.")
             {
                 Visible = false;
             }

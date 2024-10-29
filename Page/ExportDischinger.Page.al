@@ -14,43 +14,43 @@ page 50002 "Export Dischinger"
         {
             repeater(Group)
             {
-                field(Company; Company)
+                field(Company; Rec.Company)
                 {
                 }
-                field(Location; Location)
+                field(Location; Rec.Location)
                 {
                 }
-                field(Pickup; Pickup)
+                field(Pickup; Rec.Pickup)
                 {
                 }
-                field("Shipment No."; "Shipment No.")
+                field("Shipment No."; Rec."Shipment No.")
                 {
                 }
-                field("Customer No."; "Customer No.")
+                field("Customer No."; Rec."Customer No.")
                 {
                 }
-                field("Customer Name"; "Customer Name")
+                field("Customer Name"; Rec."Customer Name")
                 {
                 }
-                field(Address; Address)
+                field(Address; Rec.Address)
                 {
                 }
-                field("Post Code"; "Post Code")
+                field("Post Code"; Rec."Post Code")
                 {
                 }
-                field(City; City)
+                field(City; Rec.City)
                 {
                 }
-                field(Package; Package)
+                field(Package; Rec.Package)
                 {
                 }
-                field(Quantity; Quantity)
+                field(Quantity; Rec.Quantity)
                 {
                 }
-                field(Route; Route)
+                field(Route; Rec.Route)
                 {
                 }
-                field(Day; Day)
+                field(Day; Rec.Day)
                 {
                     Visible = false;
                 }

@@ -12,37 +12,37 @@ page 50071 "stratEdi Protocol"
         {
             repeater(Group)
             {
-                field(Protocol; Protocol)
+                field(Protocol; Rec.Protocol)
                 {
                 }
-                field("List No."; "List No.")
+                field("List No."; Rec."List No.")
                 {
                 }
-                field("Central Payer No."; "Central Payer No.")
+                field("Central Payer No."; Rec."Central Payer No.")
                 {
                 }
-                field("Document Type"; "Document Type")
+                field("Document Type"; Rec."Document Type")
                 {
                 }
-                field("Document No."; "Document No.")
+                field("Document No."; Rec."Document No.")
                 {
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
                 }
-                field("Document Direction"; "Document Direction")
+                field("Document Direction"; Rec."Document Direction")
                 {
                 }
-                field("Edi Version"; "Edi Version")
+                field("Edi Version"; Rec."Edi Version")
                 {
                 }
-                field("Posted Date"; "Posted Date")
+                field("Posted Date"; Rec."Posted Date")
                 {
                 }
-                field("Posted Time"; "Posted Time")
+                field("Posted Time"; Rec."Posted Time")
                 {
                 }
-                field("Edi File Name"; "Edi File Name")
+                field("Edi File Name"; Rec."Edi File Name")
                 {
                 }
             }
@@ -62,7 +62,7 @@ page 50071 "stratEdi Protocol"
 
                 trigger OnAction()
                 begin
-                    Rec.RENAME("Document Type", "Document No.", Status::Canceled, "List No.");
+                    Rec.RENAME(Rec."Document Type", Rec."Document No.", Rec.Status::Canceled, Rec."List No.");
                 end;
             }
         }

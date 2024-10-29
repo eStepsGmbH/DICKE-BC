@@ -16,33 +16,33 @@ pageextension 50030 pageextension50030 extends "Customer List"
     {
         addlast(content)
         {
-            field(Address; Address)
+            field(Address; Rec.Address)
             {
                 ApplicationArea = Basic, Suite;
             }
-            field(City; City)
+            field(City; Rec.City)
             {
                 ApplicationArea = Basic, Suite;
             }
-            field("Export Dischinger"; "Export Dischinger")
+            field("Export Dischinger"; Rec."Export Dischinger")
             {
                 Visible = false;
             }
-            field("Location for Dischinger"; "Location for Dischinger")
+            field("Location for Dischinger"; Rec."Location for Dischinger")
             {
                 Visible = false;
             }
-            field("Bill-to Customer No."; "Bill-to Customer No.")
+            field("Bill-to Customer No."; Rec."Bill-to Customer No.")
             {
             }
-            field("Extended Text"; "Extended Text")
+            field("Extended Text"; Rec."Extended Text")
             {
                 Visible = false;
             }
-            field("Central Payer"; "Central Payer")
+            field("Central Payer"; Rec."Central Payer")
             {
             }
-            field(GLN; GLN)
+            field(GLN; Rec.GLN)
             {
             }
         }

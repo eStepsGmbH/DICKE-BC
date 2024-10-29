@@ -13,10 +13,10 @@ pageextension 50108 pageextension50108 extends "Sales Order List"
     {
         addafter("Ship-to Code")
         {
-            field("Last Shipping No."; "Last Shipping No.")
+            field("Last Shipping No."; Rec."Last Shipping No.")
             {
             }
-            field("VUO Creation Date"; "VUO Creation Date")
+            field("VUO Creation Date"; Rec."VUO Creation Date")
             {
                 ApplicationArea = Basic, Suite;
                 Visible = false;

@@ -9,25 +9,25 @@ page 50006 "stratEdi Setup"
         {
             repeater(Group)
             {
-                field("Customer No."; "Customer No.")
+                field("Customer No."; Rec."Customer No.")
                 {
                 }
-                field("EDI Document Type"; "EDI Document Type")
+                field("EDI Document Type"; Rec."EDI Document Type")
                 {
                 }
-                field("stratEDI List Nos."; "stratEDI List Nos.")
+                field("stratEDI List Nos."; Rec."stratEDI List Nos.")
                 {
                 }
-                field("stratEDI Tolerance Days"; "stratEDI Tolerance Days")
+                field("stratEDI Tolerance Days"; Rec."stratEDI Tolerance Days")
                 {
                 }
-                field("stratEDI Export Path"; "stratEDI Export Path")
+                field("stratEDI Export Path"; Rec."stratEDI Export Path")
                 {
                 }
-                field("stratEDI Export Specifics"; "stratEDI Export Specifics")
+                field("stratEDI Export Specifics"; Rec."stratEDI Export Specifics")
                 {
                 }
-                field(GLN; GLN)
+                field(GLN; Rec.GLN)
                 {
                 }
             }

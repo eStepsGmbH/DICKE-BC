@@ -10,10 +10,10 @@ pageextension 50116 pageextension50116 extends "Sales Cr. Memo Subform"
     {
         addafter("Net Weight")
         {
-            field("Minimum Durability"; "Minimum Durability")
+            field("Minimum Durability"; Rec."Minimum Durability")
             {
             }
-            field(Coli; Coli)
+            field(Coli; Rec.Coli)
             {
                 DecimalPlaces = 0 : 0;
             }

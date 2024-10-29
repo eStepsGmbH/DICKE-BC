@@ -10,10 +10,10 @@ pageextension 50011 pageextension50011 extends "Posted Sales Shpt. Subform"
     {
         addafter("Gross Weight")
         {
-            field("Minimum Durability"; "Minimum Durability")
+            field("Minimum Durability"; Rec."Minimum Durability")
             {
             }
-            field(Coli; Coli)
+            field(Coli; Rec.Coli)
             {
                 DecimalPlaces = 0 : 0;
             }

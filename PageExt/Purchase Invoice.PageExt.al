@@ -8,7 +8,7 @@ pageextension 50062 pageextension50062 extends "Purchase Invoice"
     {
         addafter("Bank Code")
         {
-            field("Vendor Shipment No."; "Vendor Shipment No.")
+            field("Vendor Shipment No."; Rec."Vendor Shipment No.")
             {
                 ApplicationArea = Basic, Suite;
             }

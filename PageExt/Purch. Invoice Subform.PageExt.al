@@ -8,7 +8,7 @@ pageextension 50067 pageextension50067 extends "Purch. Invoice Subform"
     {
         addafter("Net Weight")
         {
-            field("Minimum Durability"; "Minimum Durability")
+            field("Minimum Durability"; Rec."Minimum Durability")
             {
             }
         }

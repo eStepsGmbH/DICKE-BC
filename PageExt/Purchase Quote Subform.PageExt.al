@@ -9,7 +9,7 @@ pageextension 50117 pageextension50117 extends "Purchase Quote Subform"
     {
         addafter("Gross Weight")
         {
-            field("Minimum Durability"; "Minimum Durability")
+            field("Minimum Durability"; Rec."Minimum Durability")
             {
             }
         }

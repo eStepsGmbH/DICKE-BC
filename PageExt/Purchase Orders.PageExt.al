@@ -4,10 +4,10 @@ pageextension 50069 pageextension50069 extends "Purchase Orders"
     {
         addlast(content)
         {
-            field("Qty. to Receive"; "Qty. to Receive")
+            field("Qty. to Receive"; Rec."Qty. to Receive")
             {
             }
-            field("Qty. to Invoice"; "Qty. to Invoice")
+            field("Qty. to Invoice"; Rec."Qty. to Invoice")
             {
             }
         }

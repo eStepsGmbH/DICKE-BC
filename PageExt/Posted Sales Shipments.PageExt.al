@@ -6,7 +6,7 @@ pageextension 50020 pageextension50020 extends "Posted Sales Shipments"
     {
         addfirst(Control1)
         {
-            field("Order No."; "Order No.")
+            field("Order No."; Rec."Order No.")
             {
             }
         }

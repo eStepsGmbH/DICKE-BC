@@ -10,17 +10,17 @@ pageextension 50042 pageextension50042 extends "Item Ledger Entries"
     {
         addafter("Description")
         {
-            field("Minimum Durability"; "Minimum Durability")
+            field("Minimum Durability"; Rec."Minimum Durability")
             {
             }
-            field(Coli; Coli)
+            field(Coli; Rec.Coli)
             {
                 DecimalPlaces = 0 : 0;
             }
-            field("Sales Order No."; "Sales Order No.")
+            field("Sales Order No."; Rec."Sales Order No.")
             {
             }
-            field("Shipment Date"; "Shipment Date")
+            field("Shipment Date"; Rec."Shipment Date")
             {
             }
         }

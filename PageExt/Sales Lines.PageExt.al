@@ -9,7 +9,7 @@ pageextension 50064 pageextension50064 extends "Sales Lines"
     {
         addafter(Description)
         {
-            field("Minimum Durability"; "Minimum Durability")
+            field("Minimum Durability"; Rec."Minimum Durability")
             {
             }
         }

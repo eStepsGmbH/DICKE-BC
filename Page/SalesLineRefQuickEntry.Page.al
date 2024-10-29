@@ -16,27 +16,27 @@ page 50005 "Sales Line Ref. Quick Entry"
         {
             repeater(Group)
             {
-                field(Selected; Selected)
+                field(Selected; Rec.Selected)
                 {
                 }
-                field("Cross-Reference No."; "Cross-Reference No.")
+                field("Cross-Reference No."; Rec."Cross-Reference No.")
                 {
                 }
-                field("Item No."; "Item No.")
-                {
-                    Visible = false;
-                }
-                field("Unit of Measure"; "Unit of Measure")
-                {
-                }
-                field(Description; Description)
-                {
-                }
-                field("Cross-Reference Type"; "Cross-Reference Type")
+                field("Item No."; Rec."Item No.")
                 {
                     Visible = false;
                 }
-                field("Cross-Reference Type No."; "Cross-Reference Type No.")
+                field("Unit of Measure"; Rec."Unit of Measure")
+                {
+                }
+                field(Description; Rec.Description)
+                {
+                }
+                field("Cross-Reference Type"; Rec."Cross-Reference Type")
+                {
+                    Visible = false;
+                }
+                field("Cross-Reference Type No."; Rec."Cross-Reference Type No.")
                 {
                     Visible = false;
                 }
@@ -105,7 +105,7 @@ page 50005 "Sales Line Ref. Quick Entry"
         IF ItemCrossReference.FINDSET THEN
             REPEAT
                 Rec := ItemCrossReference;
-                INSERT;
+                Rec.INSERT;
             UNTIL ItemCrossReference.NEXT = 0;
 
         CurrPage.UPDATE(FALSE);

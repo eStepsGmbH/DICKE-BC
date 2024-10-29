@@ -26,37 +26,37 @@ pageextension 50051 pageextension50051 extends "Sales & Receivables Setup"
             group("Dicke Food")
             {
                 Caption = 'Dicke Food';
-                field("VIO Export Path"; "VIO Export Path")
+                field("VIO Export Path"; Rec."VIO Export Path")
                 {
                 }
-                field("VUO Export Path"; "VUO Export Path")
+                field("VUO Export Path"; Rec."VUO Export Path")
                 {
                 }
-                field("GUO Import Processing"; "GUO Import Processing")
+                field("GUO Import Processing"; Rec."GUO Import Processing")
                 {
                 }
-                field("Check Post Order In Base Unit"; "Check Post Order In Base Unit")
+                field("Check Post Order In Base Unit"; Rec."Check Post Order In Base Unit")
                 {
                 }
-                field("NVE Nos."; "NVE Nos.")
+                field("NVE Nos."; Rec."NVE Nos.")
                 {
                 }
-                field("GLN No."; "GLN No.")
+                field("GLN No."; Rec."GLN No.")
                 {
                 }
-                field("EDI Orders Nos."; "EDI Orders Nos.")
+                field("EDI Orders Nos."; Rec."EDI Orders Nos.")
                 {
                 }
-                field("EDI Orders Export Path"; "EDI Orders Export Path")
+                field("EDI Orders Export Path"; Rec."EDI Orders Export Path")
                 {
                 }
-                field("EDI Import Booking Tolerance"; "EDI Import Booking Tolerance")
+                field("EDI Import Booking Tolerance"; Rec."EDI Import Booking Tolerance")
                 {
                 }
-                field("EDI Import Processing"; "EDI Import Processing")
+                field("EDI Import Processing"; Rec."EDI Import Processing")
                 {
                 }
-                field("EDI Import Vendor No"; "EDI Import Vendor No")
+                field("EDI Import Vendor No"; Rec."EDI Import Vendor No")
                 {
                 }
             }

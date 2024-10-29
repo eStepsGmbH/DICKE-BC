@@ -20,47 +20,47 @@ page 50004 "Sales Line Quick Entry"
         {
             repeater(Group)
             {
-                field("Document No."; "Document No.")
+                field("Document No."; Rec."Document No.")
                 {
                     QuickEntry = false;
                 }
-                field("Item No."; "Item No.")
+                field("Item No."; Rec."Item No.")
                 {
                 }
-                field(Quantity; Quantity)
+                field(Quantity; Rec.Quantity)
                 {
                     DecimalPlaces = 2 : 3;
                 }
-                field("Unit of Measure"; "Unit of Measure")
+                field("Unit of Measure"; Rec."Unit of Measure")
                 {
                     QuickEntry = false;
                 }
-                field(Description; Description)
+                field(Description; Rec.Description)
                 {
                     QuickEntry = false;
                 }
-                field("Minimum Durability"; "Minimum Durability")
+                field("Minimum Durability"; Rec."Minimum Durability")
                 {
                 }
-                field("Shipment Date"; "Shipment Date")
+                field("Shipment Date"; Rec."Shipment Date")
                 {
                 }
-                field("Promised Delivery Date"; "Promised Delivery Date")
+                field("Promised Delivery Date"; Rec."Promised Delivery Date")
                 {
                 }
-                field(Coli; Coli)
+                field(Coli; Rec.Coli)
                 {
                 }
-                field("External Document No."; "External Document No.")
+                field("External Document No."; Rec."External Document No.")
                 {
                 }
-                field("Order No."; "Order No.")
+                field("Order No."; Rec."Order No.")
                 {
                 }
-                field("<Description 1>"; Description)
+                field("<Description 1>"; Rec.Description)
                 {
                 }
-                field("Description 2"; "Description 2")
+                field("Description 2"; Rec."Description 2")
                 {
                     ShowCaption = false;
                 }
@@ -92,7 +92,7 @@ page 50004 "Sales Line Quick Entry"
 
                     trigger OnAction()
                     begin
-                        IF AddLinesToSalesOrder(Rec) THEN
+                        IF Rec.AddLinesToSalesOrder(Rec) THEN
                             CurrPage.CLOSE;
                     end;
                 }
@@ -122,7 +122,7 @@ page 50004 "Sales Line Quick Entry"
 
                     trigger OnAction()
                     begin
-                        IF AddShipLinesFromOtherCompany(Rec) THEN
+                        IF Rec.AddShipLinesFromOtherCompany(Rec) THEN
                             CurrPage.UPDATE;
                     end;
                 }
@@ -145,7 +145,7 @@ page 50004 "Sales Line Quick Entry"
 
     local procedure SetPageCaption(): Text[100]
     begin
-        EXIT(STRSUBSTNO('%1  %2 - %3 - %4', "Document No.", SalesHeader."Sell-to Customer Name", SalesHeader."Sell-to Address", SalesHeader."Sell-to City"));
+        EXIT(STRSUBSTNO('%1  %2 - %3 - %4', Rec."Document No.", SalesHeader."Sell-to Customer Name", SalesHeader."Sell-to Address", SalesHeader."Sell-to City"));
     end;
 
 

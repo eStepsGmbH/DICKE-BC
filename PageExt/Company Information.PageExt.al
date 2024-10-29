@@ -13,7 +13,7 @@ pageextension 50001 pageextension50001 extends "Company Information"
     {
         addafter("Name")
         {
-            field("Name 2"; "Name 2")
+            field("Name 2"; Rec."Name 2")
             {
             }
         }
@@ -22,13 +22,13 @@ pageextension 50001 pageextension50001 extends "Company Information"
             group("Dicke Food")
             {
                 Caption = 'Dicke Food';
-                field("Company Type"; "Company Type")
+                field("Company Type"; Rec."Company Type")
                 {
                 }
-                field("Company Leader"; "Company Leader")
+                field("Company Leader"; Rec."Company Leader")
                 {
                 }
-                field(Jurisdiction; Jurisdiction)
+                field(Jurisdiction; Rec.Jurisdiction)
                 {
                 }
             }

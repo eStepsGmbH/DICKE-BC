@@ -10,7 +10,7 @@ pageextension 50050 pageextension50050 extends "Sales List"
     {
         addafter(Control1)
         {
-            field("VUO Creation Date"; "VUO Creation Date")
+            field("VUO Creation Date"; Rec."VUO Creation Date")
             {
                 ApplicationArea = Basic, Suite;
                 Visible = false;
