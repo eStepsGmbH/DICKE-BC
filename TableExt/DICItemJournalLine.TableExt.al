@@ -1,10 +1,15 @@
-tableextension 50043 tableextension50043 extends "Item Ledger Entry"
+tableextension 50122 "DIC Item Journal Line" extends "Item Journal Line"
 {
     //  --------------------------------------------------------------------------------
     //  Dicke
     //  --------------------------------------------------------------------------------
     //  - Feld 50070 "Minimum Durability" hinzugefügt.
     //  - Feld 50078 "Coli" hinzugefügt.
+    //  - Funktion "CopyFromSalesLine": (MOVE TO "DIC Event Subscriber")
+    //    - Zuweisung von "Minimum Durability" (Mindesthaltbarkeit) hinzugefügt.
+    //    - Zuweisung von "Coli" hinzugefügt.
+    //  - Funktion "CopyFromPurchLine": (MOVE TO "DIC Event Subscriber")
+    //    - Zuweisung von "Minimum Durability" (Mindesthaltbarkeit) hinzugefügt.
     fields
     {
         field(50070; "Minimum Durability"; Date)

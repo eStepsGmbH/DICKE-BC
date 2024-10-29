@@ -1,4 +1,4 @@
-tableextension 50010 tableextension50010 extends "Purch. Inv. Line"
+tableextension 50010 "DIC Purch. Inv. Line" extends "Purch. Inv. Line"
 {
     //  --------------------------------------------------------------------------------
     //  Dicke

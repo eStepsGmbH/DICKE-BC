@@ -1,14 +1,7 @@
-tableextension 50053 tableextension50053 extends Contact
+tableextension 50053 "DIC Contact" extends Contact
 {
-
-    //Unsupported feature: Property Modification (Permissions) on "Contact(Table 5050)".
-
     fields
     {
-        modify(Image)
-        {
-            Caption = 'Image';
-        }
         field(50000; "Partner No."; Code[20])
         {
             CalcFormula = Lookup("Contact Business Relation"."No." WHERE("Contact No." = FIELD("Company No.")));
@@ -17,25 +10,23 @@ tableextension 50053 tableextension50053 extends Contact
 
             trigger OnLookup()
             var
-                ContactBusinessRelation: Record "5054";
-                Customer: Record "18";
-                Vendor: Record "23";
+                ContactBusinessRelation: Record "Contact Business Relation";
+                Customer: Record "Customer";
+                Vendor: Record "Vendor";
             begin
                 ContactBusinessRelation.RESET();
                 ContactBusinessRelation.SETRANGE("Contact No.", "Company No.");
                 IF ContactBusinessRelation.FINDFIRST() THEN
-                    IF ContactBusinessRelation."Link to Table" = ContactBusinessRelation."Link to Table"::Customer THEN BEGIN
+                    IF ContactBusinessRelation."Link to Table" = ContactBusinessRelation."Link to Table"::Customer THEN
                         IF Customer.GET(ContactBusinessRelation."No.") THEN
-                            PAGE.RUN(21, Customer)
+                            PAGE.RUN(Page::"Customer Card", Customer)
                         ELSE
                             ERROR('Debitor mit der Nummer %1 existiert nicht.', ContactBusinessRelation."No.");
-                    END;
-                IF ContactBusinessRelation."Link to Table" = ContactBusinessRelation."Link to Table"::Vendor THEN BEGIN
+                IF ContactBusinessRelation."Link to Table" = ContactBusinessRelation."Link to Table"::Vendor THEN
                     IF Vendor.GET(ContactBusinessRelation."No.") THEN
-                        PAGE.RUN(26, Vendor)
+                        PAGE.RUN(Page::"Vendor Card", Vendor)
                     ELSE
                         ERROR('Kreditor mit der Nummer %1 existiert nicht.', ContactBusinessRelation."No.");
-                END;
             end;
         }
     }

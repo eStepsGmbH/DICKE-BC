@@ -1,4 +1,4 @@
-tableextension 50120 tableextension50120 extends "Company Information"
+tableextension 50120 "DIC Company Information" extends "Company Information"
 {
     //  --------------------------------------------------------------------------------
     //  Dicke

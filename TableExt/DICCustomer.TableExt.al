@@ -68,28 +68,6 @@ tableextension 50029 "DIC Customer" extends Customer
         {
             Caption = 'Branch';
         }
-        field(5041050; "Datev Account No."; Code[20])
-        {
-            Caption = 'Datev Account No.';
-            Description = 'DTV';
-        }
-        field(5041051; "Don't Export Bank Account"; Boolean)
-        {
-            Caption = 'Don''t Export Bank Account';
-            Description = 'DTV';
-        }
-        field(5041052; "Datev Export Date"; Date)
-        {
-            Caption = 'Datev Export Date';
-            Description = 'DTV';
-        }
-        field(5041053; "Datev Addressee Type"; Option)
-        {
-            Caption = 'Datev Addressee Type';
-            Description = 'DTV';
-            OptionCaption = 'No Information,Natural Person,Company';
-            OptionMembers = "No Information","Natural Person",Company;
-        }
     }
 }
 

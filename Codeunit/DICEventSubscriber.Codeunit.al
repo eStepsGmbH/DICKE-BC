@@ -1,8 +1,19 @@
-codeunit 50077 EventSubscriber
+codeunit 50077 "DIC Event Subscriber"
 {
 
-    trigger OnRun()
+    [EventSubscriber(ObjectType::Table, Database::"Item Journal Line", 'OnAfterCopyItemJnlLineFromSalesLine', '', false, false)]
+    local procedure OnAfterCopyItemJnlLineFromSalesLine(var ItemJnlLine: Record "Item Journal Line"; SalesLine: Record "Sales Line")
     begin
+        ItemJnlLine."Minimum Durability" := SalesLine."Minimum Durability";
+        ItemJnlLine.Coli := SalesLine.Coli;
+        ItemJnlLine."Sales Order No." := SalesLine."Document No.";
+        ItemJnlLine."Shipment Date" := SalesLine."Shipment Date";
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Item Journal Line", 'OnAfterCopyItemJnlLineFromPurchLine', '', false, false)]
+    local procedure OnAfterCopyItemJnlLineFromPurchLine(var ItemJnlLine: Record "Item Journal Line"; PurchLine: Record "Purchase Line")
+    begin
+        ItemJnlLine."Minimum Durability" := PurchLine."Minimum Durability";
     end;
 
     [EventSubscriber(ObjectType::Table, Database::"Sales Header", 'OnAfterInitRecord', '', false, false)]
