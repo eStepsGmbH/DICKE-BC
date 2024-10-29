@@ -7,7 +7,7 @@ page 50005 "Sales Line Ref. Quick Entry"
 
     Caption = 'Sales Line Ref. Quick Entry';
     PageType = ListPlus;
-    SourceTable = "Item Cross Reference";
+    SourceTable = "Item Reference";
     SourceTableTemporary = true;
 
     layout
@@ -19,7 +19,7 @@ page 50005 "Sales Line Ref. Quick Entry"
                 field(Selected; Rec.Selected)
                 {
                 }
-                field("Cross-Reference No."; Rec."Cross-Reference No.")
+                field("Cross-Reference No."; Rec."Reference No.")
                 {
                 }
                 field("Item No."; Rec."Item No.")
@@ -32,11 +32,11 @@ page 50005 "Sales Line Ref. Quick Entry"
                 field(Description; Rec.Description)
                 {
                 }
-                field("Cross-Reference Type"; Rec."Cross-Reference Type")
+                field("Cross-Reference Type"; Rec."Reference Type")
                 {
                     Visible = false;
                 }
-                field("Cross-Reference Type No."; Rec."Cross-Reference Type No.")
+                field("Cross-Reference Type No."; Rec."Reference Type No.")
                 {
                     Visible = false;
                 }
@@ -100,8 +100,8 @@ page 50005 "Sales Line Ref. Quick Entry"
     trigger OnOpenPage()
     begin
 
-        ItemCrossReference.SETRANGE("Cross-Reference Type", ItemCrossReference."Cross-Reference Type"::Customer);
-        ItemCrossReference.SETRANGE("Cross-Reference Type No.", SalesHeader."Sell-to Customer No.");
+        ItemCrossReference.SETRANGE("Reference Type", ItemCrossReference."Reference Type"::Customer);
+        ItemCrossReference.SETRANGE("Reference Type No.", SalesHeader."Sell-to Customer No.");
         IF ItemCrossReference.FINDSET() THEN
             REPEAT
                 Rec := ItemCrossReference;
@@ -113,7 +113,7 @@ page 50005 "Sales Line Ref. Quick Entry"
 
     var
         Item: Record "27";
-        ItemCrossReference: Record "Item Cross Reference";
+        ItemCrossReference: Record "Item Reference";
         SalesHeader: Record "Sales Header";
         SalesLineQuickEntry: Record "Sales Line Quick Entry";
         ActualLineNo: Integer;

@@ -5,7 +5,7 @@ report 50008 "Order Confirm. Shipment DIC"
     //  --------------------------------------------------------------------------------
     //  Objekt erstellt.
     DefaultLayout = RDLC;
-    RDLCLayout = './OrderConfirmShipmentDIC.rdlc';
+    RDLCLayout = 'Layout/OrderConfirmShipmentDIC.rdlc';
 
     Caption = 'Order Confirmation Shipment';
     PreviewMode = PrintLayout;

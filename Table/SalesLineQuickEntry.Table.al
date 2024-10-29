@@ -209,7 +209,7 @@ table 50002 "Sales Line Quick Entry"
 
     procedure AddShipLinesFromOtherCompany(SalesLineQuickEntry: Record "Sales Line Quick Entry"): Boolean
     var
-        ItemCrossReference: Record "Item Cross Reference";
+        ItemCrossReference: Record "Item Reference";
         CustomerMandant: Record "Customer";
         Customer: Record "Customer";
         CustomerItem: Record "Item";
@@ -256,14 +256,14 @@ table 50002 "Sales Line Quick Entry"
                 Rec."Document No." := SalesHeader."No.";
                 Rec."Line No." := ActualLineNo;
                 ItemCrossReference.RESET();
-                ItemCrossReference.SETRANGE("Cross-Reference Type", ItemCrossReference."Cross-Reference Type"::Customer);
-                ItemCrossReference.SETRANGE("Cross-Reference Type No.", Customer."No.");
-                ItemCrossReference.SETRANGE("Cross-Reference No.", SalesShipmentLine."No.");
+                ItemCrossReference.SETRANGE("Reference Type", ItemCrossReference."Reference Type"::Customer);
+                ItemCrossReference.SETRANGE("Reference Type No.", Customer."No.");
+                ItemCrossReference.SETRANGE("Reference No.", SalesShipmentLine."No.");
                 IF ItemCrossReference.FINDFIRST() THEN BEGIN
                     Rec.VALIDATE("Item No.", ItemCrossReference."Item No.");
                     Rec."Unit of Measure" := ItemCrossReference."Unit of Measure";
                 END ELSE BEGIN
-                    ItemCrossReference.SETRANGE("Cross-Reference Type No.", CustomerMandant."No.");
+                    ItemCrossReference.SETRANGE("Reference Type No.", CustomerMandant."No.");
                     IF ItemCrossReference.FINDFIRST() THEN BEGIN
                         Rec.VALIDATE("Item No.", ItemCrossReference."Item No.");
                         Rec."Unit of Measure" := ItemCrossReference."Unit of Measure";

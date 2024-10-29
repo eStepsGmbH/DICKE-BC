@@ -6,7 +6,7 @@ pageextension 50062 pageextension50062 extends "Purchase Invoice"
     //  Feld "Vendor Shipment No." auf Reiter "Allgemein" eingeblendet.
     layout
     {
-        addafter("Bank Code")
+        addlast(General)
         {
             field("Vendor Shipment No."; Rec."Vendor Shipment No.")
             {

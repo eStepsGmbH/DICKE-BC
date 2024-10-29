@@ -260,16 +260,16 @@ page 50070 "Sales Invoice Lines DIC"
                 field("Responsibility Center"; Rec."Responsibility Center")
                 {
                 }
-                field("Cross-Reference No."; Rec."Cross-Reference No.")
+                field("Cross-Reference No."; Rec."Item Reference No.")
                 {
                 }
-                field("Unit of Measure (Cross Ref.)"; Rec."Unit of Measure (Cross Ref.)")
+                field("Unit of Measure (Cross Ref.)"; Rec."Item Reference Unit of Measure")
                 {
                 }
-                field("Cross-Reference Type"; Rec."Cross-Reference Type")
+                field("Cross-Reference Type"; Rec."Item Reference Type")
                 {
                 }
-                field("Cross-Reference Type No."; Rec."Cross-Reference Type No.")
+                field("Cross-Reference Type No."; Rec."Item Reference Type No.")
                 {
                 }
                 field("Item Category Code"; Rec."Item Category Code")

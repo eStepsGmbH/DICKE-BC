@@ -7,7 +7,7 @@ report 50074 "Sales - Invoice DIC"
     //  Code modified: Sales Invoice Line - OnPreDataItem()
     //  Code mofified: FormatAddressFields
     DefaultLayout = RDLC;
-    RDLCLayout = './SalesInvoiceDIC.rdlc';
+    RDLCLayout = 'Layout/SalesInvoiceDIC.rdlc';
 
     Caption = 'Sales - Invoice';
     EnableHyperlinks = true;

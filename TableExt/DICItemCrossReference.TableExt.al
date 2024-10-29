@@ -1,4 +1,4 @@
-tableextension 50093 "DIC Item Cross Reference" extends "Item Cross Reference"
+tableextension 50093 "DIC Item Cross Reference" extends "Item Reference"
 {
     //  --------------------------------------------------------------------------------
     //  Dicke
