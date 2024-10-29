@@ -377,7 +377,7 @@ page 50070 "Sales Invoice Lines DIC"
         EXIT("Line No." = TempSalesInvLine."Line No.");
     end;
 
-    [Scope('Internal')]
+
     procedure GetSelectedLine(var FromSalesInvLine: Record "113")
     begin
         FromSalesInvLine.COPY(Rec);

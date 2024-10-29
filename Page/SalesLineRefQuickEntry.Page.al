@@ -123,7 +123,7 @@ page 50005 "Sales Line Ref. Quick Entry"
         EXIT(STRSUBSTNO('%1  %2 - %3 - %4', SalesHeader."No.", SalesHeader."Sell-to Customer Name", SalesHeader."Sell-to Address", SalesHeader."Sell-to City"));
     end;
 
-    [Scope('Internal')]
+
     procedure SetSalesHeader(var NewSalesHeader: Record "Sales Header")
     begin
         NewSalesHeader.TESTFIELD("Document Type", SalesHeader."Document Type"::Order);

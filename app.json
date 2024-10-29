@@ -10,7 +10,6 @@
   "help": "",
   "url": "",
   "logo": "",
-  "showMyCode": true,
   "dependencies": [
     {
       "id": "6f0293d3-86fc-4ff8-9632-54a580be6546",
@@ -36,5 +35,5 @@
   ],
   "contextSensitiveHelpUrl": "https://esteps.de/kontakt",
   "runtime":"13.0",
-  "target": "OnPrem"
+  "target": "Cloud"
 }

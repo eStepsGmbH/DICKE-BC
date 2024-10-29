@@ -153,7 +153,7 @@ table 50002 "Sales Line Quick Entry"
         ErrNoCustomerFound: Label 'Es gibt in diesem Mandanten keinen Debitor mit dem Namen %1 !';
         ErrNoSellToCustomerFound: Label 'Es gibt in diesem Mandanten keinen Debitor mit der Nummer %1 !';
 
-    [Scope('Internal')]
+
     procedure AddLinesToSalesOrder(var SalesLineQuickEntry: Record "Sales Line Quick Entry"): Boolean
     var
         ActualLineNo: Integer;
@@ -232,7 +232,7 @@ table 50002 "Sales Line Quick Entry"
         EXIT(SalesLineQuickEntry.COUNT = 0);
     end;
 
-    [Scope('Internal')]
+
     procedure AddShipLinesFromOtherCompany(SalesLineQuickEntry: Record "Sales Line Quick Entry"): Boolean
     var
         ItemCrossReference: Record "Item Cross Reference";
@@ -354,7 +354,7 @@ table 50002 "Sales Line Quick Entry"
             EXIT(10000);
     end;
 
-    [Scope('Internal')]
+
     procedure InsertExtendedText(SalesLine: Record "Sales Line"; Unconditionally: Boolean)
     var
         TransferExtendedText: Codeunit "378";
