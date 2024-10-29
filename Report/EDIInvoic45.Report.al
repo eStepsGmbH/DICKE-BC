@@ -179,7 +179,7 @@ report 50091 "EDI Invoic 45"
     var
         StringBuilder_dn: TextBuilder;
         DateTime_dn: DateTime;
-        StreamWriter_dn: Codeunit DotNet_StreamWriter;
+        StreamWriter_dn: DotNet StreamWriter;
         TextLine: Text;
         ILNIdSender: Text[35];
         ILNIdReceiver: Text[35];

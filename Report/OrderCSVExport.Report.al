@@ -98,9 +98,9 @@ report 50094 "Order CSV Export"
 
     var
         StringBuilder_dn: TextBuilder;
-        String_dn: Codeunit DotNet_String;
+        String_dn: DotNet String;
         DateTime_dn: DateTime;
-        StreamWriter_dn: Codeunit DotNet_StreamWriter;
+        StreamWriter_dn: DotNet StreamWriter;
         TextLine: Text;
         FileManagement: Codeunit "File Management";
 

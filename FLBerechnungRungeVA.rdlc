@@ -1,0 +1,365 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString />
+      </ConnectionProperties>
+      <rd:SecurityType>None</rd:SecurityType>
+    </DataSource>
+  </DataSources>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <Height>2in</Height>
+        <Style />
+      </Body>
+      <Width>6.5in</Width>
+      <Page>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <Code>Public Function BlankZero(ByVal Value As Decimal)
+    if Value = 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankPos(ByVal Value As Decimal)
+    if Value &gt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankZeroAndPos(ByVal Value As Decimal)
+    if Value &gt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNeg(ByVal Value As Decimal)
+    if Value &lt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNegAndZero(ByVal Value As Decimal)
+    if Value &lt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+</Code>
+  <Language>=User!Language</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="V_Lagerzeitraum">
+          <DataField>V_Lagerzeitraum</DataField>
+        </Field>
+        <Field Name="V_Lagergewicht_Verkauf">
+          <DataField>V_Lagergewicht_Verkauf</DataField>
+        </Field>
+        <Field Name="V_Lagergewicht_VerkaufFormat">
+          <DataField>V_Lagergewicht_VerkaufFormat</DataField>
+        </Field>
+        <Field Name="V_Lagergewicht_Zugang">
+          <DataField>V_Lagergewicht_Zugang</DataField>
+        </Field>
+        <Field Name="V_Lagergewicht_ZugangFormat">
+          <DataField>V_Lagergewicht_ZugangFormat</DataField>
+        </Field>
+        <Field Name="V_Lagergewicht_Abgang">
+          <DataField>V_Lagergewicht_Abgang</DataField>
+        </Field>
+        <Field Name="V_Lagergewicht_AbgangFormat">
+          <DataField>V_Lagergewicht_AbgangFormat</DataField>
+        </Field>
+        <Field Name="V_Lagergewicht_Umlagerung">
+          <DataField>V_Lagergewicht_Umlagerung</DataField>
+        </Field>
+        <Field Name="V_Lagergewicht_UmlagerungFormat">
+          <DataField>V_Lagergewicht_UmlagerungFormat</DataField>
+        </Field>
+        <Field Name="V_Lagergewicht_Gutschrift">
+          <DataField>V_Lagergewicht_Gutschrift</DataField>
+        </Field>
+        <Field Name="V_Lagergewicht_GutschriftFormat">
+          <DataField>V_Lagergewicht_GutschriftFormat</DataField>
+        </Field>
+        <Field Name="V_Lagergewicht_Saldo">
+          <DataField>V_Lagergewicht_Saldo</DataField>
+        </Field>
+        <Field Name="V_Lagergewicht_SaldoFormat">
+          <DataField>V_Lagergewicht_SaldoFormat</DataField>
+        </Field>
+        <Field Name="CompInfo_R_Picture">
+          <DataField>CompInfo_R_Picture</DataField>
+        </Field>
+        <Field Name="CompInfo_R_Amtsgericht">
+          <DataField>CompInfo_R_Amtsgericht</DataField>
+        </Field>
+        <Field Name="CompInfo_R_Name">
+          <DataField>CompInfo_R_Name</DataField>
+        </Field>
+        <Field Name="CompInfo_R_Address">
+          <DataField>CompInfo_R_Address</DataField>
+        </Field>
+        <Field Name="CompInfo_R_PostCode">
+          <DataField>CompInfo_R_PostCode</DataField>
+        </Field>
+        <Field Name="CompInfo_R_City">
+          <DataField>CompInfo_R_City</DataField>
+        </Field>
+        <Field Name="CompInfo_R_HomePage">
+          <DataField>CompInfo_R_HomePage</DataField>
+        </Field>
+        <Field Name="CompInfo_R_Geschäftsführer">
+          <DataField>CompInfo_R_Geschäftsführer</DataField>
+        </Field>
+        <Field Name="CompInfo_R_Zusatztext">
+          <DataField>CompInfo_R_Zusatztext</DataField>
+        </Field>
+        <Field Name="CompInfo_R_Banküberschift">
+          <DataField>CompInfo_R_Banküberschift</DataField>
+        </Field>
+        <Field Name="CompInfo_R_BankName">
+          <DataField>CompInfo_R_BankName</DataField>
+        </Field>
+        <Field Name="CompInfo_R_IBAN">
+          <DataField>CompInfo_R_IBAN</DataField>
+        </Field>
+        <Field Name="CompInfo_R_SWIFTCode">
+          <DataField>CompInfo_R_SWIFTCode</DataField>
+        </Field>
+        <Field Name="CompInfo_R_USTID">
+          <DataField>CompInfo_R_USTID</DataField>
+        </Field>
+        <Field Name="CompInfo_R_Steuernummer">
+          <DataField>CompInfo_R_Steuernummer</DataField>
+        </Field>
+        <Field Name="companyname">
+          <DataField>companyname</DataField>
+        </Field>
+        <Field Name="Today">
+          <DataField>Today</DataField>
+        </Field>
+        <Field Name="Seite">
+          <DataField>Seite</DataField>
+        </Field>
+        <Field Name="USERID">
+          <DataField>USERID</DataField>
+        </Field>
+        <Field Name="Logo1">
+          <DataField>Logo1</DataField>
+        </Field>
+        <Field Name="T_Abrechnungsinfo_Kopf">
+          <DataField>T_Abrechnungsinfo_Kopf</DataField>
+        </Field>
+        <Field Name="T_Buchungszeitraum">
+          <DataField>T_Buchungszeitraum</DataField>
+        </Field>
+        <Field Name="T_Postentyp">
+          <DataField>T_Postentyp</DataField>
+        </Field>
+        <Field Name="T_Standortcode">
+          <DataField>T_Standortcode</DataField>
+        </Field>
+        <Field Name="V_AbrText">
+          <DataField>V_AbrText</DataField>
+        </Field>
+        <Field Name="V_F_AbrZeit">
+          <DataField>V_F_AbrZeit</DataField>
+        </Field>
+        <Field Name="V_F_Type">
+          <DataField>V_F_Type</DataField>
+        </Field>
+        <Field Name="V_F_LocCode">
+          <DataField>V_F_LocCode</DataField>
+        </Field>
+        <Field Name="T_Normalversand">
+          <DataField>T_Normalversand</DataField>
+        </Field>
+        <Field Name="T_AktVABO">
+          <DataField>T_AktVABO</DataField>
+        </Field>
+        <Field Name="T_AktVWO">
+          <DataField>T_AktVWO</DataField>
+        </Field>
+        <Field Name="T_AktVAKO">
+          <DataField>T_AktVAKO</DataField>
+        </Field>
+        <Field Name="T_Auslieferung">
+          <DataField>T_Auslieferung</DataField>
+        </Field>
+        <Field Name="T_Exemplar">
+          <DataField>T_Exemplar</DataField>
+        </Field>
+        <Field Name="T_VPE">
+          <DataField>T_VPE</DataField>
+        </Field>
+        <Field Name="T_Rechnung">
+          <DataField>T_Rechnung</DataField>
+        </Field>
+        <Field Name="T_Gewicht">
+          <DataField>T_Gewicht</DataField>
+        </Field>
+        <Field Name="V_Su_Auslieferung">
+          <DataField>V_Su_Auslieferung</DataField>
+        </Field>
+        <Field Name="V_Su_AuslieferungFormat">
+          <DataField>V_Su_AuslieferungFormat</DataField>
+        </Field>
+        <Field Name="V_Su_Auslieferung1">
+          <DataField>V_Su_Auslieferung1</DataField>
+        </Field>
+        <Field Name="V_Su_Auslieferung1Format">
+          <DataField>V_Su_Auslieferung1Format</DataField>
+        </Field>
+        <Field Name="V_Su_Auslieferung2">
+          <DataField>V_Su_Auslieferung2</DataField>
+        </Field>
+        <Field Name="V_Su_Auslieferung2Format">
+          <DataField>V_Su_Auslieferung2Format</DataField>
+        </Field>
+        <Field Name="V_Su_Auslieferung3">
+          <DataField>V_Su_Auslieferung3</DataField>
+        </Field>
+        <Field Name="V_Su_Auslieferung3Format">
+          <DataField>V_Su_Auslieferung3Format</DataField>
+        </Field>
+        <Field Name="V_Su_Exp">
+          <DataField>V_Su_Exp</DataField>
+        </Field>
+        <Field Name="V_Su_ExpFormat">
+          <DataField>V_Su_ExpFormat</DataField>
+        </Field>
+        <Field Name="V_Su_Exp1">
+          <DataField>V_Su_Exp1</DataField>
+        </Field>
+        <Field Name="V_Su_Exp1Format">
+          <DataField>V_Su_Exp1Format</DataField>
+        </Field>
+        <Field Name="V_su_Exp2">
+          <DataField>V_su_Exp2</DataField>
+        </Field>
+        <Field Name="V_su_Exp2Format">
+          <DataField>V_su_Exp2Format</DataField>
+        </Field>
+        <Field Name="V_Su_Exp3">
+          <DataField>V_Su_Exp3</DataField>
+        </Field>
+        <Field Name="V_Su_Exp3Format">
+          <DataField>V_Su_Exp3Format</DataField>
+        </Field>
+        <Field Name="V_Su_VP">
+          <DataField>V_Su_VP</DataField>
+        </Field>
+        <Field Name="V_Su_VPFormat">
+          <DataField>V_Su_VPFormat</DataField>
+        </Field>
+        <Field Name="V_Su_VP1">
+          <DataField>V_Su_VP1</DataField>
+        </Field>
+        <Field Name="V_Su_VP1Format">
+          <DataField>V_Su_VP1Format</DataField>
+        </Field>
+        <Field Name="V_Su_VP2">
+          <DataField>V_Su_VP2</DataField>
+        </Field>
+        <Field Name="V_Su_VP2Format">
+          <DataField>V_Su_VP2Format</DataField>
+        </Field>
+        <Field Name="V_Su_VP3">
+          <DataField>V_Su_VP3</DataField>
+        </Field>
+        <Field Name="V_Su_VP3Format">
+          <DataField>V_Su_VP3Format</DataField>
+        </Field>
+        <Field Name="V_Su_RG">
+          <DataField>V_Su_RG</DataField>
+        </Field>
+        <Field Name="V_Su_RGFormat">
+          <DataField>V_Su_RGFormat</DataField>
+        </Field>
+        <Field Name="V_Su_RG1">
+          <DataField>V_Su_RG1</DataField>
+        </Field>
+        <Field Name="V_Su_RG1Format">
+          <DataField>V_Su_RG1Format</DataField>
+        </Field>
+        <Field Name="V_Su_RG2">
+          <DataField>V_Su_RG2</DataField>
+        </Field>
+        <Field Name="V_Su_RG2Format">
+          <DataField>V_Su_RG2Format</DataField>
+        </Field>
+        <Field Name="V_Su_RG3">
+          <DataField>V_Su_RG3</DataField>
+        </Field>
+        <Field Name="V_Su_RG3Format">
+          <DataField>V_Su_RG3Format</DataField>
+        </Field>
+        <Field Name="V_Su_LG">
+          <DataField>V_Su_LG</DataField>
+        </Field>
+        <Field Name="V_Su_LGFormat">
+          <DataField>V_Su_LGFormat</DataField>
+        </Field>
+        <Field Name="V_Su_LG1">
+          <DataField>V_Su_LG1</DataField>
+        </Field>
+        <Field Name="V_Su_LG1Format">
+          <DataField>V_Su_LG1Format</DataField>
+        </Field>
+        <Field Name="V_Su_LG2">
+          <DataField>V_Su_LG2</DataField>
+        </Field>
+        <Field Name="V_Su_LG2Format">
+          <DataField>V_Su_LG2Format</DataField>
+        </Field>
+        <Field Name="V_Su_LG3">
+          <DataField>V_Su_LG3</DataField>
+        </Field>
+        <Field Name="V_Su_LG3Format">
+          <DataField>V_Su_LG3Format</DataField>
+        </Field>
+        <Field Name="T_Lagerzeitraum">
+          <DataField>T_Lagerzeitraum</DataField>
+        </Field>
+        <Field Name="T_Verkauf">
+          <DataField>T_Verkauf</DataField>
+        </Field>
+        <Field Name="T_Zugang">
+          <DataField>T_Zugang</DataField>
+        </Field>
+        <Field Name="T_Abgang">
+          <DataField>T_Abgang</DataField>
+        </Field>
+        <Field Name="T_Umlagerung">
+          <DataField>T_Umlagerung</DataField>
+        </Field>
+        <Field Name="T_Gutschrift">
+          <DataField>T_Gutschrift</DataField>
+        </Field>
+        <Field Name="T_Saldo">
+          <DataField>T_Saldo</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
+</Report>

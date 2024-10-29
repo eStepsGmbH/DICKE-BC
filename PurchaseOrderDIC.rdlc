@@ -1,0 +1,1076 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString />
+      </ConnectionProperties>
+      <rd:SecurityType>None</rd:SecurityType>
+    </DataSource>
+  </DataSources>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <Height>2in</Height>
+        <Style />
+      </Body>
+      <Width>6.5in</Width>
+      <Page>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <Code>Public Function BlankZero(ByVal Value As Decimal)
+    if Value = 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankPos(ByVal Value As Decimal)
+    if Value &gt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankZeroAndPos(ByVal Value As Decimal)
+    if Value &gt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNeg(ByVal Value As Decimal)
+    if Value &lt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNegAndZero(ByVal Value As Decimal)
+    if Value &lt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+</Code>
+  <Language>=User!Language</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="Purchase_Header_Document_Type">
+          <DataField>Purchase_Header_Document_Type</DataField>
+        </Field>
+        <Field Name="Purchase_Header_No_">
+          <DataField>Purchase_Header_No_</DataField>
+        </Field>
+        <Field Name="STRSUBSTNO_Text004_CopyText_">
+          <DataField>STRSUBSTNO_Text004_CopyText_</DataField>
+        </Field>
+        <Field Name="STRSUBSTNO_Text005_FORMAT_CurrReport_PAGENO__">
+          <DataField>STRSUBSTNO_Text005_FORMAT_CurrReport_PAGENO__</DataField>
+        </Field>
+        <Field Name="CompanyAddr_1_">
+          <DataField>CompanyAddr_1_</DataField>
+        </Field>
+        <Field Name="CompanyAddr_2_">
+          <DataField>CompanyAddr_2_</DataField>
+        </Field>
+        <Field Name="CompanyAddr_3_">
+          <DataField>CompanyAddr_3_</DataField>
+        </Field>
+        <Field Name="CompanyAddr_4_">
+          <DataField>CompanyAddr_4_</DataField>
+        </Field>
+        <Field Name="CompanyInfo__Phone_No__">
+          <DataField>CompanyInfo__Phone_No__</DataField>
+        </Field>
+        <Field Name="CompanyInfo__Fax_No__">
+          <DataField>CompanyInfo__Fax_No__</DataField>
+        </Field>
+        <Field Name="CompanyInfo__VAT_Registration_No__">
+          <DataField>CompanyInfo__VAT_Registration_No__</DataField>
+        </Field>
+        <Field Name="CompanyInfo__Giro_No__">
+          <DataField>CompanyInfo__Giro_No__</DataField>
+        </Field>
+        <Field Name="CompanyInfo__Bank_Name_">
+          <DataField>CompanyInfo__Bank_Name_</DataField>
+        </Field>
+        <Field Name="CompanyInfo__Bank_Account_No__">
+          <DataField>CompanyInfo__Bank_Account_No__</DataField>
+        </Field>
+        <Field Name="FORMAT__Purchase_Header___Document_Date__0_4_">
+          <DataField>FORMAT__Purchase_Header___Document_Date__0_4_</DataField>
+        </Field>
+        <Field Name="VATNoText">
+          <DataField>VATNoText</DataField>
+        </Field>
+        <Field Name="Purchase_Header___VAT_Registration_No__">
+          <DataField>Purchase_Header___VAT_Registration_No__</DataField>
+        </Field>
+        <Field Name="PurchaserText">
+          <DataField>PurchaserText</DataField>
+        </Field>
+        <Field Name="SalesPurchPerson_Name">
+          <DataField>SalesPurchPerson_Name</DataField>
+        </Field>
+        <Field Name="Purchase_Header___No__">
+          <DataField>Purchase_Header___No__</DataField>
+        </Field>
+        <Field Name="ReferenceText">
+          <DataField>ReferenceText</DataField>
+        </Field>
+        <Field Name="Purchase_Header___Your_Reference_">
+          <DataField>Purchase_Header___Your_Reference_</DataField>
+        </Field>
+        <Field Name="CompanyAddr_5_">
+          <DataField>CompanyAddr_5_</DataField>
+        </Field>
+        <Field Name="CompanyAddr_6_">
+          <DataField>CompanyAddr_6_</DataField>
+        </Field>
+        <Field Name="Purchase_Header___Buy_from_Vendor_No__">
+          <DataField>Purchase_Header___Buy_from_Vendor_No__</DataField>
+        </Field>
+        <Field Name="BuyFromAddr_1_">
+          <DataField>BuyFromAddr_1_</DataField>
+        </Field>
+        <Field Name="BuyFromAddr_2_">
+          <DataField>BuyFromAddr_2_</DataField>
+        </Field>
+        <Field Name="BuyFromAddr_3_">
+          <DataField>BuyFromAddr_3_</DataField>
+        </Field>
+        <Field Name="BuyFromAddr_4_">
+          <DataField>BuyFromAddr_4_</DataField>
+        </Field>
+        <Field Name="BuyFromAddr_5_">
+          <DataField>BuyFromAddr_5_</DataField>
+        </Field>
+        <Field Name="BuyFromAddr_6_">
+          <DataField>BuyFromAddr_6_</DataField>
+        </Field>
+        <Field Name="BuyFromAddr_7_">
+          <DataField>BuyFromAddr_7_</DataField>
+        </Field>
+        <Field Name="BuyFromAddr_8_">
+          <DataField>BuyFromAddr_8_</DataField>
+        </Field>
+        <Field Name="Purchase_Header___Prices_Including_VAT_">
+          <DataField>Purchase_Header___Prices_Including_VAT_</DataField>
+        </Field>
+        <Field Name="OutputNo">
+          <DataField>OutputNo</DataField>
+        </Field>
+        <Field Name="Purchase_Header___VAT_Base_Discount___">
+          <DataField>Purchase_Header___VAT_Base_Discount___</DataField>
+        </Field>
+        <Field Name="Purchase_Header___VAT_Base_Discount___Format">
+          <DataField>Purchase_Header___VAT_Base_Discount___Format</DataField>
+        </Field>
+        <Field Name="PricesInclVATtxt">
+          <DataField>PricesInclVATtxt</DataField>
+        </Field>
+        <Field Name="ShowInternalInfo">
+          <DataField>ShowInternalInfo</DataField>
+        </Field>
+        <Field Name="PageLoop_Number">
+          <DataField>PageLoop_Number</DataField>
+        </Field>
+        <Field Name="CompanyInfo__Phone_No__Caption">
+          <DataField>CompanyInfo__Phone_No__Caption</DataField>
+        </Field>
+        <Field Name="CompanyInfo__Fax_No__Caption">
+          <DataField>CompanyInfo__Fax_No__Caption</DataField>
+        </Field>
+        <Field Name="CompanyInfo__VAT_Registration_No__Caption">
+          <DataField>CompanyInfo__VAT_Registration_No__Caption</DataField>
+        </Field>
+        <Field Name="CompanyInfo__Giro_No__Caption">
+          <DataField>CompanyInfo__Giro_No__Caption</DataField>
+        </Field>
+        <Field Name="CompanyInfo__Bank_Name_Caption">
+          <DataField>CompanyInfo__Bank_Name_Caption</DataField>
+        </Field>
+        <Field Name="CompanyInfo__Bank_Account_No__Caption">
+          <DataField>CompanyInfo__Bank_Account_No__Caption</DataField>
+        </Field>
+        <Field Name="Order_No_Caption">
+          <DataField>Order_No_Caption</DataField>
+        </Field>
+        <Field Name="Purchase_Header___Buy_from_Vendor_No__Caption">
+          <DataField>Purchase_Header___Buy_from_Vendor_No__Caption</DataField>
+        </Field>
+        <Field Name="Purchase_Header___Prices_Including_VAT_Caption">
+          <DataField>Purchase_Header___Prices_Including_VAT_Caption</DataField>
+        </Field>
+        <Field Name="PageCaption">
+          <DataField>PageCaption</DataField>
+        </Field>
+        <Field Name="OrderCaption">
+          <DataField>OrderCaption</DataField>
+        </Field>
+        <Field Name="DeliveryDateCaption">
+          <DataField>DeliveryDateCaption</DataField>
+        </Field>
+        <Field Name="PackagesCaption">
+          <DataField>PackagesCaption</DataField>
+        </Field>
+        <Field Name="KgCaption">
+          <DataField>KgCaption</DataField>
+        </Field>
+        <Field Name="Purchase_Header__ExpectedReceiptDate">
+          <DataField>Purchase_Header__ExpectedReceiptDate</DataField>
+        </Field>
+        <Field Name="VendorNoCaption">
+          <DataField>VendorNoCaption</DataField>
+        </Field>
+        <Field Name="TotalQtyCaption">
+          <DataField>TotalQtyCaption</DataField>
+        </Field>
+        <Field Name="Purchase_Header__DocumentDate_Caption">
+          <DataField>Purchase_Header__DocumentDate_Caption</DataField>
+        </Field>
+        <Field Name="Purchase_Header__DocumentDate">
+          <DataField>Purchase_Header__DocumentDate</DataField>
+        </Field>
+        <Field Name="DimText">
+          <DataField>DimText</DataField>
+        </Field>
+        <Field Name="DimText_Control72">
+          <DataField>DimText_Control72</DataField>
+        </Field>
+        <Field Name="DimensionLoop1_Number">
+          <DataField>DimensionLoop1_Number</DataField>
+        </Field>
+        <Field Name="Header_DimensionsCaption">
+          <DataField>Header_DimensionsCaption</DataField>
+        </Field>
+        <Field Name="PurchLine__Line_Amount_">
+          <DataField>PurchLine__Line_Amount_</DataField>
+        </Field>
+        <Field Name="PurchLine__Line_Amount_Format">
+          <DataField>PurchLine__Line_Amount_Format</DataField>
+        </Field>
+        <Field Name="Purchase_Line__Description">
+          <DataField>Purchase_Line__Description</DataField>
+        </Field>
+        <Field Name="Purchase_Line___Line_No__">
+          <DataField>Purchase_Line___Line_No__</DataField>
+        </Field>
+        <Field Name="AllowInvDisctxt">
+          <DataField>AllowInvDisctxt</DataField>
+        </Field>
+        <Field Name="Purchase_Line__Type">
+          <DataField>Purchase_Line__Type</DataField>
+        </Field>
+        <Field Name="Purchase_Line___No__">
+          <DataField>Purchase_Line___No__</DataField>
+        </Field>
+        <Field Name="Purchase_Line___VendorNo">
+          <DataField>Purchase_Line___VendorNo</DataField>
+        </Field>
+        <Field Name="Purchase_Line__Description_Control63">
+          <DataField>Purchase_Line__Description_Control63</DataField>
+        </Field>
+        <Field Name="Purchase_Line__Quantity">
+          <DataField>Purchase_Line__Quantity</DataField>
+        </Field>
+        <Field Name="Purchase_Line__QuantityFormat">
+          <DataField>Purchase_Line__QuantityFormat</DataField>
+        </Field>
+        <Field Name="Purchase_Line___Unit_of_Measure_">
+          <DataField>Purchase_Line___Unit_of_Measure_</DataField>
+        </Field>
+        <Field Name="Purchase_Line___Direct_Unit_Cost_">
+          <DataField>Purchase_Line___Direct_Unit_Cost_</DataField>
+        </Field>
+        <Field Name="Purchase_Line___Direct_Unit_Cost_Format">
+          <DataField>Purchase_Line___Direct_Unit_Cost_Format</DataField>
+        </Field>
+        <Field Name="Purchase_Line___Line_Discount___">
+          <DataField>Purchase_Line___Line_Discount___</DataField>
+        </Field>
+        <Field Name="Purchase_Line___Line_Discount___Format">
+          <DataField>Purchase_Line___Line_Discount___Format</DataField>
+        </Field>
+        <Field Name="Purchase_Line___Line_Amount_">
+          <DataField>Purchase_Line___Line_Amount_</DataField>
+        </Field>
+        <Field Name="Purchase_Line___Line_Amount_Format">
+          <DataField>Purchase_Line___Line_Amount_Format</DataField>
+        </Field>
+        <Field Name="Purchase_Line___Allow_Invoice_Disc__">
+          <DataField>Purchase_Line___Allow_Invoice_Disc__</DataField>
+        </Field>
+        <Field Name="Purchase_Line___VAT_Identifier_">
+          <DataField>Purchase_Line___VAT_Identifier_</DataField>
+        </Field>
+        <Field Name="PurchLine__Line_Amount__Control77">
+          <DataField>PurchLine__Line_Amount__Control77</DataField>
+        </Field>
+        <Field Name="PurchLine__Line_Amount__Control77Format">
+          <DataField>PurchLine__Line_Amount__Control77Format</DataField>
+        </Field>
+        <Field Name="PurchLine__Inv__Discount_Amount_">
+          <DataField>PurchLine__Inv__Discount_Amount_</DataField>
+        </Field>
+        <Field Name="PurchLine__Inv__Discount_Amount_Format">
+          <DataField>PurchLine__Inv__Discount_Amount_Format</DataField>
+        </Field>
+        <Field Name="PurchLine__Line_Amount__Control109">
+          <DataField>PurchLine__Line_Amount__Control109</DataField>
+        </Field>
+        <Field Name="PurchLine__Line_Amount__Control109Format">
+          <DataField>PurchLine__Line_Amount__Control109Format</DataField>
+        </Field>
+        <Field Name="TotalText">
+          <DataField>TotalText</DataField>
+        </Field>
+        <Field Name="PurchLine__Line_Amount__PurchLine__Inv__Discount_Amount_">
+          <DataField>PurchLine__Line_Amount__PurchLine__Inv__Discount_Amount_</DataField>
+        </Field>
+        <Field Name="PurchLine__Line_Amount__PurchLine__Inv__Discount_Amount_Format">
+          <DataField>PurchLine__Line_Amount__PurchLine__Inv__Discount_Amount_Format</DataField>
+        </Field>
+        <Field Name="TotalInclVATText">
+          <DataField>TotalInclVATText</DataField>
+        </Field>
+        <Field Name="VATAmountLine_VATAmountText">
+          <DataField>VATAmountLine_VATAmountText</DataField>
+        </Field>
+        <Field Name="VATAmount">
+          <DataField>VATAmount</DataField>
+        </Field>
+        <Field Name="VATAmountFormat">
+          <DataField>VATAmountFormat</DataField>
+        </Field>
+        <Field Name="PurchLine__Line_Amount__PurchLine__Inv__Discount_Amount____VATAmount">
+          <DataField>PurchLine__Line_Amount__PurchLine__Inv__Discount_Amount____VATAmount</DataField>
+        </Field>
+        <Field Name="PurchLine__Line_Amount__PurchLine__Inv__Discount_Amount____VATAmountFormat">
+          <DataField>PurchLine__Line_Amount__PurchLine__Inv__Discount_Amount____VATAmountFormat</DataField>
+        </Field>
+        <Field Name="TotalExclVATText">
+          <DataField>TotalExclVATText</DataField>
+        </Field>
+        <Field Name="PurchLine__Line_Amount__PurchLine__Inv__Discount_Amount__Control147">
+          <DataField>PurchLine__Line_Amount__PurchLine__Inv__Discount_Amount__Control147</DataField>
+        </Field>
+        <Field Name="PurchLine__Line_Amount__PurchLine__Inv__Discount_Amount__Control147Format">
+          <DataField>PurchLine__Line_Amount__PurchLine__Inv__Discount_Amount__Control147Format</DataField>
+        </Field>
+        <Field Name="VATDiscountAmount">
+          <DataField>VATDiscountAmount</DataField>
+        </Field>
+        <Field Name="VATDiscountAmountFormat">
+          <DataField>VATDiscountAmountFormat</DataField>
+        </Field>
+        <Field Name="VATAmountLine_VATAmountText_Control32">
+          <DataField>VATAmountLine_VATAmountText_Control32</DataField>
+        </Field>
+        <Field Name="TotalExclVATText_Control51">
+          <DataField>TotalExclVATText_Control51</DataField>
+        </Field>
+        <Field Name="TotalInclVATText_Control69">
+          <DataField>TotalInclVATText_Control69</DataField>
+        </Field>
+        <Field Name="VATBaseAmount">
+          <DataField>VATBaseAmount</DataField>
+        </Field>
+        <Field Name="VATBaseAmountFormat">
+          <DataField>VATBaseAmountFormat</DataField>
+        </Field>
+        <Field Name="VATAmount_Control83">
+          <DataField>VATAmount_Control83</DataField>
+        </Field>
+        <Field Name="VATAmount_Control83Format">
+          <DataField>VATAmount_Control83Format</DataField>
+        </Field>
+        <Field Name="TotalAmountInclVAT">
+          <DataField>TotalAmountInclVAT</DataField>
+        </Field>
+        <Field Name="TotalAmountInclVATFormat">
+          <DataField>TotalAmountInclVATFormat</DataField>
+        </Field>
+        <Field Name="RoundLoop_Number">
+          <DataField>RoundLoop_Number</DataField>
+        </Field>
+        <Field Name="TotalSubTotal">
+          <DataField>TotalSubTotal</DataField>
+        </Field>
+        <Field Name="TotalSubTotalFormat">
+          <DataField>TotalSubTotalFormat</DataField>
+        </Field>
+        <Field Name="TotalInvoiceDiscountAmount">
+          <DataField>TotalInvoiceDiscountAmount</DataField>
+        </Field>
+        <Field Name="TotalInvoiceDiscountAmountFormat">
+          <DataField>TotalInvoiceDiscountAmountFormat</DataField>
+        </Field>
+        <Field Name="TotalAmount">
+          <DataField>TotalAmount</DataField>
+        </Field>
+        <Field Name="TotalAmountFormat">
+          <DataField>TotalAmountFormat</DataField>
+        </Field>
+        <Field Name="Purchase_Line___No__Caption">
+          <DataField>Purchase_Line___No__Caption</DataField>
+        </Field>
+        <Field Name="Purchase_Line__Description_Control63Caption">
+          <DataField>Purchase_Line__Description_Control63Caption</DataField>
+        </Field>
+        <Field Name="Purchase_Line__QuantityCaption">
+          <DataField>Purchase_Line__QuantityCaption</DataField>
+        </Field>
+        <Field Name="Purchase_Line___Unit_of_Measure_Caption">
+          <DataField>Purchase_Line___Unit_of_Measure_Caption</DataField>
+        </Field>
+        <Field Name="Direct_Unit_CostCaption">
+          <DataField>Direct_Unit_CostCaption</DataField>
+        </Field>
+        <Field Name="Purchase_Line___Line_Discount___Caption">
+          <DataField>Purchase_Line___Line_Discount___Caption</DataField>
+        </Field>
+        <Field Name="AmountCaption">
+          <DataField>AmountCaption</DataField>
+        </Field>
+        <Field Name="Purchase_Line___Allow_Invoice_Disc__Caption">
+          <DataField>Purchase_Line___Allow_Invoice_Disc__Caption</DataField>
+        </Field>
+        <Field Name="Purchase_Line___VAT_Identifier_Caption">
+          <DataField>Purchase_Line___VAT_Identifier_Caption</DataField>
+        </Field>
+        <Field Name="ContinuedCaption">
+          <DataField>ContinuedCaption</DataField>
+        </Field>
+        <Field Name="ContinuedCaption_Control76">
+          <DataField>ContinuedCaption_Control76</DataField>
+        </Field>
+        <Field Name="PurchLine__Inv__Discount_Amount_Caption">
+          <DataField>PurchLine__Inv__Discount_Amount_Caption</DataField>
+        </Field>
+        <Field Name="SubtotalCaption">
+          <DataField>SubtotalCaption</DataField>
+        </Field>
+        <Field Name="VATDiscountAmountCaption">
+          <DataField>VATDiscountAmountCaption</DataField>
+        </Field>
+        <Field Name="TotalQtySum">
+          <DataField>TotalQtySum</DataField>
+        </Field>
+        <Field Name="TotalQtySumFormat">
+          <DataField>TotalQtySumFormat</DataField>
+        </Field>
+        <Field Name="Purchase_Line_TotalItemQty">
+          <DataField>Purchase_Line_TotalItemQty</DataField>
+        </Field>
+        <Field Name="Purchase_Line_TotalItemQtyFormat">
+          <DataField>Purchase_Line_TotalItemQtyFormat</DataField>
+        </Field>
+        <Field Name="Purchase_Line_Description2">
+          <DataField>Purchase_Line_Description2</DataField>
+        </Field>
+        <Field Name="DimText_Control74">
+          <DataField>DimText_Control74</DataField>
+        </Field>
+        <Field Name="DimensionLoop2_Number">
+          <DataField>DimensionLoop2_Number</DataField>
+        </Field>
+        <Field Name="Line_DimensionsCaption">
+          <DataField>Line_DimensionsCaption</DataField>
+        </Field>
+        <Field Name="VATAmountLine__VAT_Base_">
+          <DataField>VATAmountLine__VAT_Base_</DataField>
+        </Field>
+        <Field Name="VATAmountLine__VAT_Base_Format">
+          <DataField>VATAmountLine__VAT_Base_Format</DataField>
+        </Field>
+        <Field Name="VATAmountLine__VAT_Amount_">
+          <DataField>VATAmountLine__VAT_Amount_</DataField>
+        </Field>
+        <Field Name="VATAmountLine__VAT_Amount_Format">
+          <DataField>VATAmountLine__VAT_Amount_Format</DataField>
+        </Field>
+        <Field Name="VATAmountLine__Line_Amount_">
+          <DataField>VATAmountLine__Line_Amount_</DataField>
+        </Field>
+        <Field Name="VATAmountLine__Line_Amount_Format">
+          <DataField>VATAmountLine__Line_Amount_Format</DataField>
+        </Field>
+        <Field Name="VATAmountLine__Inv__Disc__Base_Amount_">
+          <DataField>VATAmountLine__Inv__Disc__Base_Amount_</DataField>
+        </Field>
+        <Field Name="VATAmountLine__Inv__Disc__Base_Amount_Format">
+          <DataField>VATAmountLine__Inv__Disc__Base_Amount_Format</DataField>
+        </Field>
+        <Field Name="VATAmountLine__Invoice_Discount_Amount_">
+          <DataField>VATAmountLine__Invoice_Discount_Amount_</DataField>
+        </Field>
+        <Field Name="VATAmountLine__Invoice_Discount_Amount_Format">
+          <DataField>VATAmountLine__Invoice_Discount_Amount_Format</DataField>
+        </Field>
+        <Field Name="VATAmountLine__VAT___">
+          <DataField>VATAmountLine__VAT___</DataField>
+        </Field>
+        <Field Name="VATAmountLine__VAT___Format">
+          <DataField>VATAmountLine__VAT___Format</DataField>
+        </Field>
+        <Field Name="VATAmountLine__VAT_Base__Control99">
+          <DataField>VATAmountLine__VAT_Base__Control99</DataField>
+        </Field>
+        <Field Name="VATAmountLine__VAT_Base__Control99Format">
+          <DataField>VATAmountLine__VAT_Base__Control99Format</DataField>
+        </Field>
+        <Field Name="VATAmountLine__VAT_Amount__Control100">
+          <DataField>VATAmountLine__VAT_Amount__Control100</DataField>
+        </Field>
+        <Field Name="VATAmountLine__VAT_Amount__Control100Format">
+          <DataField>VATAmountLine__VAT_Amount__Control100Format</DataField>
+        </Field>
+        <Field Name="VATAmountLine__VAT_Identifier_">
+          <DataField>VATAmountLine__VAT_Identifier_</DataField>
+        </Field>
+        <Field Name="VATAmountLine__Line_Amount__Control131">
+          <DataField>VATAmountLine__Line_Amount__Control131</DataField>
+        </Field>
+        <Field Name="VATAmountLine__Line_Amount__Control131Format">
+          <DataField>VATAmountLine__Line_Amount__Control131Format</DataField>
+        </Field>
+        <Field Name="VATAmountLine__Inv__Disc__Base_Amount__Control132">
+          <DataField>VATAmountLine__Inv__Disc__Base_Amount__Control132</DataField>
+        </Field>
+        <Field Name="VATAmountLine__Inv__Disc__Base_Amount__Control132Format">
+          <DataField>VATAmountLine__Inv__Disc__Base_Amount__Control132Format</DataField>
+        </Field>
+        <Field Name="VATAmountLine__Invoice_Discount_Amount__Control133">
+          <DataField>VATAmountLine__Invoice_Discount_Amount__Control133</DataField>
+        </Field>
+        <Field Name="VATAmountLine__Invoice_Discount_Amount__Control133Format">
+          <DataField>VATAmountLine__Invoice_Discount_Amount__Control133Format</DataField>
+        </Field>
+        <Field Name="VATAmountLine__VAT_Base__Control103">
+          <DataField>VATAmountLine__VAT_Base__Control103</DataField>
+        </Field>
+        <Field Name="VATAmountLine__VAT_Base__Control103Format">
+          <DataField>VATAmountLine__VAT_Base__Control103Format</DataField>
+        </Field>
+        <Field Name="VATAmountLine__VAT_Amount__Control104">
+          <DataField>VATAmountLine__VAT_Amount__Control104</DataField>
+        </Field>
+        <Field Name="VATAmountLine__VAT_Amount__Control104Format">
+          <DataField>VATAmountLine__VAT_Amount__Control104Format</DataField>
+        </Field>
+        <Field Name="VATAmountLine__Line_Amount__Control56">
+          <DataField>VATAmountLine__Line_Amount__Control56</DataField>
+        </Field>
+        <Field Name="VATAmountLine__Line_Amount__Control56Format">
+          <DataField>VATAmountLine__Line_Amount__Control56Format</DataField>
+        </Field>
+        <Field Name="VATAmountLine__Inv__Disc__Base_Amount__Control57">
+          <DataField>VATAmountLine__Inv__Disc__Base_Amount__Control57</DataField>
+        </Field>
+        <Field Name="VATAmountLine__Inv__Disc__Base_Amount__Control57Format">
+          <DataField>VATAmountLine__Inv__Disc__Base_Amount__Control57Format</DataField>
+        </Field>
+        <Field Name="VATAmountLine__Invoice_Discount_Amount__Control58">
+          <DataField>VATAmountLine__Invoice_Discount_Amount__Control58</DataField>
+        </Field>
+        <Field Name="VATAmountLine__Invoice_Discount_Amount__Control58Format">
+          <DataField>VATAmountLine__Invoice_Discount_Amount__Control58Format</DataField>
+        </Field>
+        <Field Name="VATAmountLine__VAT_Base__Control107">
+          <DataField>VATAmountLine__VAT_Base__Control107</DataField>
+        </Field>
+        <Field Name="VATAmountLine__VAT_Base__Control107Format">
+          <DataField>VATAmountLine__VAT_Base__Control107Format</DataField>
+        </Field>
+        <Field Name="VATAmountLine__VAT_Amount__Control108">
+          <DataField>VATAmountLine__VAT_Amount__Control108</DataField>
+        </Field>
+        <Field Name="VATAmountLine__VAT_Amount__Control108Format">
+          <DataField>VATAmountLine__VAT_Amount__Control108Format</DataField>
+        </Field>
+        <Field Name="VATAmountLine__Line_Amount__Control59">
+          <DataField>VATAmountLine__Line_Amount__Control59</DataField>
+        </Field>
+        <Field Name="VATAmountLine__Line_Amount__Control59Format">
+          <DataField>VATAmountLine__Line_Amount__Control59Format</DataField>
+        </Field>
+        <Field Name="VATAmountLine__Inv__Disc__Base_Amount__Control60">
+          <DataField>VATAmountLine__Inv__Disc__Base_Amount__Control60</DataField>
+        </Field>
+        <Field Name="VATAmountLine__Inv__Disc__Base_Amount__Control60Format">
+          <DataField>VATAmountLine__Inv__Disc__Base_Amount__Control60Format</DataField>
+        </Field>
+        <Field Name="VATAmountLine__Invoice_Discount_Amount__Control61">
+          <DataField>VATAmountLine__Invoice_Discount_Amount__Control61</DataField>
+        </Field>
+        <Field Name="VATAmountLine__Invoice_Discount_Amount__Control61Format">
+          <DataField>VATAmountLine__Invoice_Discount_Amount__Control61Format</DataField>
+        </Field>
+        <Field Name="VATCounter_Number">
+          <DataField>VATCounter_Number</DataField>
+        </Field>
+        <Field Name="VATAmountLine__VAT___Caption">
+          <DataField>VATAmountLine__VAT___Caption</DataField>
+        </Field>
+        <Field Name="VATAmountLine__VAT_Base__Control99Caption">
+          <DataField>VATAmountLine__VAT_Base__Control99Caption</DataField>
+        </Field>
+        <Field Name="VATAmountLine__VAT_Amount__Control100Caption">
+          <DataField>VATAmountLine__VAT_Amount__Control100Caption</DataField>
+        </Field>
+        <Field Name="VAT_Amount_SpecificationCaption">
+          <DataField>VAT_Amount_SpecificationCaption</DataField>
+        </Field>
+        <Field Name="VATAmountLine__VAT_Identifier_Caption">
+          <DataField>VATAmountLine__VAT_Identifier_Caption</DataField>
+        </Field>
+        <Field Name="VATAmountLine__Inv__Disc__Base_Amount__Control132Caption">
+          <DataField>VATAmountLine__Inv__Disc__Base_Amount__Control132Caption</DataField>
+        </Field>
+        <Field Name="VATAmountLine__Line_Amount__Control131Caption">
+          <DataField>VATAmountLine__Line_Amount__Control131Caption</DataField>
+        </Field>
+        <Field Name="VATAmountLine__Invoice_Discount_Amount__Control133Caption">
+          <DataField>VATAmountLine__Invoice_Discount_Amount__Control133Caption</DataField>
+        </Field>
+        <Field Name="VATAmountLine__VAT_Base_Caption">
+          <DataField>VATAmountLine__VAT_Base_Caption</DataField>
+        </Field>
+        <Field Name="VATAmountLine__VAT_Base__Control103Caption">
+          <DataField>VATAmountLine__VAT_Base__Control103Caption</DataField>
+        </Field>
+        <Field Name="VATAmountLine__VAT_Base__Control107Caption">
+          <DataField>VATAmountLine__VAT_Base__Control107Caption</DataField>
+        </Field>
+        <Field Name="VALExchRate">
+          <DataField>VALExchRate</DataField>
+        </Field>
+        <Field Name="VALSpecLCYHeader">
+          <DataField>VALSpecLCYHeader</DataField>
+        </Field>
+        <Field Name="VALVATAmountLCY">
+          <DataField>VALVATAmountLCY</DataField>
+        </Field>
+        <Field Name="VALVATAmountLCYFormat">
+          <DataField>VALVATAmountLCYFormat</DataField>
+        </Field>
+        <Field Name="VALVATBaseLCY">
+          <DataField>VALVATBaseLCY</DataField>
+        </Field>
+        <Field Name="VALVATBaseLCYFormat">
+          <DataField>VALVATBaseLCYFormat</DataField>
+        </Field>
+        <Field Name="VALVATAmountLCY_Control158">
+          <DataField>VALVATAmountLCY_Control158</DataField>
+        </Field>
+        <Field Name="VALVATAmountLCY_Control158Format">
+          <DataField>VALVATAmountLCY_Control158Format</DataField>
+        </Field>
+        <Field Name="VALVATBaseLCY_Control159">
+          <DataField>VALVATBaseLCY_Control159</DataField>
+        </Field>
+        <Field Name="VALVATBaseLCY_Control159Format">
+          <DataField>VALVATBaseLCY_Control159Format</DataField>
+        </Field>
+        <Field Name="VATAmountLine__VAT____Control160">
+          <DataField>VATAmountLine__VAT____Control160</DataField>
+        </Field>
+        <Field Name="VATAmountLine__VAT____Control160Format">
+          <DataField>VATAmountLine__VAT____Control160Format</DataField>
+        </Field>
+        <Field Name="VATAmountLine__VAT_Identifier__Control161">
+          <DataField>VATAmountLine__VAT_Identifier__Control161</DataField>
+        </Field>
+        <Field Name="VALVATAmountLCY_Control162">
+          <DataField>VALVATAmountLCY_Control162</DataField>
+        </Field>
+        <Field Name="VALVATAmountLCY_Control162Format">
+          <DataField>VALVATAmountLCY_Control162Format</DataField>
+        </Field>
+        <Field Name="VALVATBaseLCY_Control163">
+          <DataField>VALVATBaseLCY_Control163</DataField>
+        </Field>
+        <Field Name="VALVATBaseLCY_Control163Format">
+          <DataField>VALVATBaseLCY_Control163Format</DataField>
+        </Field>
+        <Field Name="VALVATAmountLCY_Control165">
+          <DataField>VALVATAmountLCY_Control165</DataField>
+        </Field>
+        <Field Name="VALVATAmountLCY_Control165Format">
+          <DataField>VALVATAmountLCY_Control165Format</DataField>
+        </Field>
+        <Field Name="VALVATBaseLCY_Control166">
+          <DataField>VALVATBaseLCY_Control166</DataField>
+        </Field>
+        <Field Name="VALVATBaseLCY_Control166Format">
+          <DataField>VALVATBaseLCY_Control166Format</DataField>
+        </Field>
+        <Field Name="VATCounterLCY_Number">
+          <DataField>VATCounterLCY_Number</DataField>
+        </Field>
+        <Field Name="VALVATAmountLCY_Control158Caption">
+          <DataField>VALVATAmountLCY_Control158Caption</DataField>
+        </Field>
+        <Field Name="VALVATBaseLCY_Control159Caption">
+          <DataField>VALVATBaseLCY_Control159Caption</DataField>
+        </Field>
+        <Field Name="VATAmountLine__VAT____Control160Caption">
+          <DataField>VATAmountLine__VAT____Control160Caption</DataField>
+        </Field>
+        <Field Name="VATAmountLine__VAT_Identifier__Control161Caption">
+          <DataField>VATAmountLine__VAT_Identifier__Control161Caption</DataField>
+        </Field>
+        <Field Name="VALVATBaseLCYCaption">
+          <DataField>VALVATBaseLCYCaption</DataField>
+        </Field>
+        <Field Name="VALVATBaseLCY_Control163Caption">
+          <DataField>VALVATBaseLCY_Control163Caption</DataField>
+        </Field>
+        <Field Name="VALVATBaseLCY_Control166Caption">
+          <DataField>VALVATBaseLCY_Control166Caption</DataField>
+        </Field>
+        <Field Name="PaymentTerms_Description">
+          <DataField>PaymentTerms_Description</DataField>
+        </Field>
+        <Field Name="ShipmentMethod_Description">
+          <DataField>ShipmentMethod_Description</DataField>
+        </Field>
+        <Field Name="Total_Number">
+          <DataField>Total_Number</DataField>
+        </Field>
+        <Field Name="PaymentTerms_DescriptionCaption">
+          <DataField>PaymentTerms_DescriptionCaption</DataField>
+        </Field>
+        <Field Name="ShipmentMethod_DescriptionCaption">
+          <DataField>ShipmentMethod_DescriptionCaption</DataField>
+        </Field>
+        <Field Name="Purchase_Header___Pay_to_Vendor_No__">
+          <DataField>Purchase_Header___Pay_to_Vendor_No__</DataField>
+        </Field>
+        <Field Name="VendAddr_8_">
+          <DataField>VendAddr_8_</DataField>
+        </Field>
+        <Field Name="VendAddr_7_">
+          <DataField>VendAddr_7_</DataField>
+        </Field>
+        <Field Name="VendAddr_6_">
+          <DataField>VendAddr_6_</DataField>
+        </Field>
+        <Field Name="VendAddr_5_">
+          <DataField>VendAddr_5_</DataField>
+        </Field>
+        <Field Name="VendAddr_4_">
+          <DataField>VendAddr_4_</DataField>
+        </Field>
+        <Field Name="VendAddr_3_">
+          <DataField>VendAddr_3_</DataField>
+        </Field>
+        <Field Name="VendAddr_2_">
+          <DataField>VendAddr_2_</DataField>
+        </Field>
+        <Field Name="VendAddr_1_">
+          <DataField>VendAddr_1_</DataField>
+        </Field>
+        <Field Name="Total2_Number">
+          <DataField>Total2_Number</DataField>
+        </Field>
+        <Field Name="Payment_DetailsCaption">
+          <DataField>Payment_DetailsCaption</DataField>
+        </Field>
+        <Field Name="Vendor_No_Caption">
+          <DataField>Vendor_No_Caption</DataField>
+        </Field>
+        <Field Name="Purchase_Header___Sell_to_Customer_No__">
+          <DataField>Purchase_Header___Sell_to_Customer_No__</DataField>
+        </Field>
+        <Field Name="ShipToAddr_1_">
+          <DataField>ShipToAddr_1_</DataField>
+        </Field>
+        <Field Name="ShipToAddr_2_">
+          <DataField>ShipToAddr_2_</DataField>
+        </Field>
+        <Field Name="ShipToAddr_3_">
+          <DataField>ShipToAddr_3_</DataField>
+        </Field>
+        <Field Name="ShipToAddr_4_">
+          <DataField>ShipToAddr_4_</DataField>
+        </Field>
+        <Field Name="ShipToAddr_5_">
+          <DataField>ShipToAddr_5_</DataField>
+        </Field>
+        <Field Name="ShipToAddr_6_">
+          <DataField>ShipToAddr_6_</DataField>
+        </Field>
+        <Field Name="ShipToAddr_7_">
+          <DataField>ShipToAddr_7_</DataField>
+        </Field>
+        <Field Name="ShipToAddr_8_">
+          <DataField>ShipToAddr_8_</DataField>
+        </Field>
+        <Field Name="Total3_Number">
+          <DataField>Total3_Number</DataField>
+        </Field>
+        <Field Name="Ship_to_AddressCaption">
+          <DataField>Ship_to_AddressCaption</DataField>
+        </Field>
+        <Field Name="Purchase_Header___Sell_to_Customer_No__Caption">
+          <DataField>Purchase_Header___Sell_to_Customer_No__Caption</DataField>
+        </Field>
+        <Field Name="DeliveryAddressCaptionLbl">
+          <DataField>DeliveryAddressCaptionLbl</DataField>
+        </Field>
+        <Field Name="PrepmtLineAmount">
+          <DataField>PrepmtLineAmount</DataField>
+        </Field>
+        <Field Name="PrepmtLineAmountFormat">
+          <DataField>PrepmtLineAmountFormat</DataField>
+        </Field>
+        <Field Name="PrepmtInvBuf__G_L_Account_No__">
+          <DataField>PrepmtInvBuf__G_L_Account_No__</DataField>
+        </Field>
+        <Field Name="PrepmtLineAmount_Control173">
+          <DataField>PrepmtLineAmount_Control173</DataField>
+        </Field>
+        <Field Name="PrepmtLineAmount_Control173Format">
+          <DataField>PrepmtLineAmount_Control173Format</DataField>
+        </Field>
+        <Field Name="PrepmtInvBuf_Description">
+          <DataField>PrepmtInvBuf_Description</DataField>
+        </Field>
+        <Field Name="PrepmtLineAmount_Control177">
+          <DataField>PrepmtLineAmount_Control177</DataField>
+        </Field>
+        <Field Name="PrepmtLineAmount_Control177Format">
+          <DataField>PrepmtLineAmount_Control177Format</DataField>
+        </Field>
+        <Field Name="TotalExclVATText_Control182">
+          <DataField>TotalExclVATText_Control182</DataField>
+        </Field>
+        <Field Name="PrepmtInvBuf_Amount">
+          <DataField>PrepmtInvBuf_Amount</DataField>
+        </Field>
+        <Field Name="PrepmtInvBuf_AmountFormat">
+          <DataField>PrepmtInvBuf_AmountFormat</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmountLine_VATAmountText">
+          <DataField>PrepmtVATAmountLine_VATAmountText</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmount">
+          <DataField>PrepmtVATAmount</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmountFormat">
+          <DataField>PrepmtVATAmountFormat</DataField>
+        </Field>
+        <Field Name="TotalInclVATText_Control186">
+          <DataField>TotalInclVATText_Control186</DataField>
+        </Field>
+        <Field Name="PrepmtInvBuf_Amount___PrepmtVATAmount">
+          <DataField>PrepmtInvBuf_Amount___PrepmtVATAmount</DataField>
+        </Field>
+        <Field Name="PrepmtInvBuf_Amount___PrepmtVATAmountFormat">
+          <DataField>PrepmtInvBuf_Amount___PrepmtVATAmountFormat</DataField>
+        </Field>
+        <Field Name="TotalInclVATText_Control188">
+          <DataField>TotalInclVATText_Control188</DataField>
+        </Field>
+        <Field Name="VATAmountLine_VATAmountText_Control189">
+          <DataField>VATAmountLine_VATAmountText_Control189</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmount_Control190">
+          <DataField>PrepmtVATAmount_Control190</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmount_Control190Format">
+          <DataField>PrepmtVATAmount_Control190Format</DataField>
+        </Field>
+        <Field Name="PrepmtTotalAmountInclVAT">
+          <DataField>PrepmtTotalAmountInclVAT</DataField>
+        </Field>
+        <Field Name="PrepmtTotalAmountInclVATFormat">
+          <DataField>PrepmtTotalAmountInclVATFormat</DataField>
+        </Field>
+        <Field Name="TotalExclVATText_Control192">
+          <DataField>TotalExclVATText_Control192</DataField>
+        </Field>
+        <Field Name="PrepmtVATBaseAmount">
+          <DataField>PrepmtVATBaseAmount</DataField>
+        </Field>
+        <Field Name="PrepmtVATBaseAmountFormat">
+          <DataField>PrepmtVATBaseAmountFormat</DataField>
+        </Field>
+        <Field Name="PrepmtLoop_Number">
+          <DataField>PrepmtLoop_Number</DataField>
+        </Field>
+        <Field Name="PrepmtLineAmount_Control173Caption">
+          <DataField>PrepmtLineAmount_Control173Caption</DataField>
+        </Field>
+        <Field Name="PrepmtInvBuf_DescriptionCaption">
+          <DataField>PrepmtInvBuf_DescriptionCaption</DataField>
+        </Field>
+        <Field Name="PrepmtInvBuf__G_L_Account_No__Caption">
+          <DataField>PrepmtInvBuf__G_L_Account_No__Caption</DataField>
+        </Field>
+        <Field Name="Prepayment_SpecificationCaption">
+          <DataField>Prepayment_SpecificationCaption</DataField>
+        </Field>
+        <Field Name="ContinuedCaption_Control176">
+          <DataField>ContinuedCaption_Control176</DataField>
+        </Field>
+        <Field Name="ContinuedCaption_Control178">
+          <DataField>ContinuedCaption_Control178</DataField>
+        </Field>
+        <Field Name="DimText_Control179">
+          <DataField>DimText_Control179</DataField>
+        </Field>
+        <Field Name="Line_DimensionsCaption_Control180">
+          <DataField>Line_DimensionsCaption_Control180</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmountLine__VAT_Amount_">
+          <DataField>PrepmtVATAmountLine__VAT_Amount_</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmountLine__VAT_Amount_Format">
+          <DataField>PrepmtVATAmountLine__VAT_Amount_Format</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmountLine__VAT_Base_">
+          <DataField>PrepmtVATAmountLine__VAT_Base_</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmountLine__VAT_Base_Format">
+          <DataField>PrepmtVATAmountLine__VAT_Base_Format</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmountLine__Line_Amount_">
+          <DataField>PrepmtVATAmountLine__Line_Amount_</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmountLine__Line_Amount_Format">
+          <DataField>PrepmtVATAmountLine__Line_Amount_Format</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmountLine__VAT___">
+          <DataField>PrepmtVATAmountLine__VAT___</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmountLine__VAT___Format">
+          <DataField>PrepmtVATAmountLine__VAT___Format</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmountLine__VAT_Amount__Control194">
+          <DataField>PrepmtVATAmountLine__VAT_Amount__Control194</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmountLine__VAT_Amount__Control194Format">
+          <DataField>PrepmtVATAmountLine__VAT_Amount__Control194Format</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmountLine__VAT_Base__Control195">
+          <DataField>PrepmtVATAmountLine__VAT_Base__Control195</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmountLine__VAT_Base__Control195Format">
+          <DataField>PrepmtVATAmountLine__VAT_Base__Control195Format</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmountLine__Line_Amount__Control196">
+          <DataField>PrepmtVATAmountLine__Line_Amount__Control196</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmountLine__Line_Amount__Control196Format">
+          <DataField>PrepmtVATAmountLine__Line_Amount__Control196Format</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmountLine__VAT____Control197">
+          <DataField>PrepmtVATAmountLine__VAT____Control197</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmountLine__VAT____Control197Format">
+          <DataField>PrepmtVATAmountLine__VAT____Control197Format</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmountLine__VAT_Identifier_">
+          <DataField>PrepmtVATAmountLine__VAT_Identifier_</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmountLine__VAT_Amount__Control210">
+          <DataField>PrepmtVATAmountLine__VAT_Amount__Control210</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmountLine__VAT_Amount__Control210Format">
+          <DataField>PrepmtVATAmountLine__VAT_Amount__Control210Format</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmountLine__VAT_Base__Control211">
+          <DataField>PrepmtVATAmountLine__VAT_Base__Control211</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmountLine__VAT_Base__Control211Format">
+          <DataField>PrepmtVATAmountLine__VAT_Base__Control211Format</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmountLine__Line_Amount__Control212">
+          <DataField>PrepmtVATAmountLine__Line_Amount__Control212</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmountLine__Line_Amount__Control212Format">
+          <DataField>PrepmtVATAmountLine__Line_Amount__Control212Format</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmountLine__VAT____Control213">
+          <DataField>PrepmtVATAmountLine__VAT____Control213</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmountLine__VAT____Control213Format">
+          <DataField>PrepmtVATAmountLine__VAT____Control213Format</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmountLine__VAT_Amount__Control215">
+          <DataField>PrepmtVATAmountLine__VAT_Amount__Control215</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmountLine__VAT_Amount__Control215Format">
+          <DataField>PrepmtVATAmountLine__VAT_Amount__Control215Format</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmountLine__VAT_Base__Control216">
+          <DataField>PrepmtVATAmountLine__VAT_Base__Control216</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmountLine__VAT_Base__Control216Format">
+          <DataField>PrepmtVATAmountLine__VAT_Base__Control216Format</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmountLine__Line_Amount__Control217">
+          <DataField>PrepmtVATAmountLine__Line_Amount__Control217</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmountLine__Line_Amount__Control217Format">
+          <DataField>PrepmtVATAmountLine__Line_Amount__Control217Format</DataField>
+        </Field>
+        <Field Name="PrepmtVATCounter_Number">
+          <DataField>PrepmtVATCounter_Number</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmountLine__VAT_Amount__Control194Caption">
+          <DataField>PrepmtVATAmountLine__VAT_Amount__Control194Caption</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmountLine__VAT_Base__Control195Caption">
+          <DataField>PrepmtVATAmountLine__VAT_Base__Control195Caption</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmountLine__Line_Amount__Control196Caption">
+          <DataField>PrepmtVATAmountLine__Line_Amount__Control196Caption</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmountLine__VAT____Control197Caption">
+          <DataField>PrepmtVATAmountLine__VAT____Control197Caption</DataField>
+        </Field>
+        <Field Name="Prepayment_VAT_Amount_SpecificationCaption">
+          <DataField>Prepayment_VAT_Amount_SpecificationCaption</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmountLine__VAT_Identifier_Caption">
+          <DataField>PrepmtVATAmountLine__VAT_Identifier_Caption</DataField>
+        </Field>
+        <Field Name="ContinuedCaption_Control209">
+          <DataField>ContinuedCaption_Control209</DataField>
+        </Field>
+        <Field Name="ContinuedCaption_Control214">
+          <DataField>ContinuedCaption_Control214</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmountLine__VAT_Base__Control216Caption">
+          <DataField>PrepmtVATAmountLine__VAT_Base__Control216Caption</DataField>
+        </Field>
+        <Field Name="PrepmtPaymentTerms_Description">
+          <DataField>PrepmtPaymentTerms_Description</DataField>
+        </Field>
+        <Field Name="PrepmtTotal_Number">
+          <DataField>PrepmtTotal_Number</DataField>
+        </Field>
+        <Field Name="PrepmtPaymentTerms_DescriptionCaption">
+          <DataField>PrepmtPaymentTerms_DescriptionCaption</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
+</Report>

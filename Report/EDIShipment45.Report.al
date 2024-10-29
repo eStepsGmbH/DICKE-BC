@@ -113,7 +113,7 @@ report 50095 "EDI Shipment 45"
         StringBuilder_dn: TextBuilder;
         String_dn: Codeunit DotNet_String;
         DateTime_dn: DateTime;
-        StreamWriter_dn: Codeunit DotNet_StreamWriter;
+        StreamWriter_dn: DotNet StreamWriter;
         TextLine: Text;
         ILNIdSender: Text[35];
         ILNIdReceiver: Text[35];

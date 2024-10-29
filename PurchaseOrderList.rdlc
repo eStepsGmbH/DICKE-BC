@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString />
+      </ConnectionProperties>
+      <rd:SecurityType>None</rd:SecurityType>
+    </DataSource>
+  </DataSources>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <Height>2in</Height>
+        <Style />
+      </Body>
+      <Width>6.5in</Width>
+      <Page>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <Code>Public Function BlankZero(ByVal Value As Decimal)
+    if Value = 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankPos(ByVal Value As Decimal)
+    if Value &gt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankZeroAndPos(ByVal Value As Decimal)
+    if Value &gt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNeg(ByVal Value As Decimal)
+    if Value &lt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNegAndZero(ByVal Value As Decimal)
+    if Value &lt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+</Code>
+  <Language>=User!Language</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="USERID">
+          <DataField>USERID</DataField>
+        </Field>
+        <Field Name="CurrReport_PAGENO">
+          <DataField>CurrReport_PAGENO</DataField>
+        </Field>
+        <Field Name="COMPANYNAME">
+          <DataField>COMPANYNAME</DataField>
+        </Field>
+        <Field Name="Purchase_Header_BuyFromVendorNo_Caption">
+          <DataField>Purchase_Header_BuyFromVendorNo_Caption</DataField>
+        </Field>
+        <Field Name="Purchase_Header_BuyFromVendorNo">
+          <DataField>Purchase_Header_BuyFromVendorNo</DataField>
+        </Field>
+        <Field Name="Purchase_Header_BuyFromVendorName">
+          <DataField>Purchase_Header_BuyFromVendorName</DataField>
+        </Field>
+        <Field Name="KreditorCaption">
+          <DataField>KreditorCaption</DataField>
+        </Field>
+        <Field Name="BelegnrCaption">
+          <DataField>BelegnrCaption</DataField>
+        </Field>
+        <Field Name="ArtikelCaption">
+          <DataField>ArtikelCaption</DataField>
+        </Field>
+        <Field Name="BeschreibungCaption">
+          <DataField>BeschreibungCaption</DataField>
+        </Field>
+        <Field Name="VioCaption">
+          <DataField>VioCaption</DataField>
+        </Field>
+        <Field Name="VioErstelltCaption">
+          <DataField>VioErstelltCaption</DataField>
+        </Field>
+        <Field Name="KolliCaption">
+          <DataField>KolliCaption</DataField>
+        </Field>
+        <Field Name="ErwartetesWeDatumCaption">
+          <DataField>ErwartetesWeDatumCaption</DataField>
+        </Field>
+        <Field Name="Purchase_Line_DocumentNo_Caption">
+          <DataField>Purchase_Line_DocumentNo_Caption</DataField>
+        </Field>
+        <Field Name="Purchase_Line_DocumentNo">
+          <DataField>Purchase_Line_DocumentNo</DataField>
+        </Field>
+        <Field Name="Purchase_Line_No_Caption">
+          <DataField>Purchase_Line_No_Caption</DataField>
+        </Field>
+        <Field Name="Purchase_Line_No">
+          <DataField>Purchase_Line_No</DataField>
+        </Field>
+        <Field Name="Purchase_Line_Description_Caption">
+          <DataField>Purchase_Line_Description_Caption</DataField>
+        </Field>
+        <Field Name="Purchase_Line_Description">
+          <DataField>Purchase_Line_Description</DataField>
+        </Field>
+        <Field Name="Purchase_Line_VIO_Caption">
+          <DataField>Purchase_Line_VIO_Caption</DataField>
+        </Field>
+        <Field Name="Purchase_Line_VIO">
+          <DataField>Purchase_Line_VIO</DataField>
+        </Field>
+        <Field Name="Purchase_Line_VIO_Creation_Date_Caption">
+          <DataField>Purchase_Line_VIO_Creation_Date_Caption</DataField>
+        </Field>
+        <Field Name="Purchase_Line_VIO_Creation_Date">
+          <DataField>Purchase_Line_VIO_Creation_Date</DataField>
+        </Field>
+        <Field Name="Purchase_Line_Toal_Item_Qty_Caption">
+          <DataField>Purchase_Line_Toal_Item_Qty_Caption</DataField>
+        </Field>
+        <Field Name="Purchase_Line_Toal_Item_Qty">
+          <DataField>Purchase_Line_Toal_Item_Qty</DataField>
+        </Field>
+        <Field Name="Purchase_Line_Toal_Item_QtyFormat">
+          <DataField>Purchase_Line_Toal_Item_QtyFormat</DataField>
+        </Field>
+        <Field Name="Purchase_Line_Expected_Receipt_Date_Caption">
+          <DataField>Purchase_Line_Expected_Receipt_Date_Caption</DataField>
+        </Field>
+        <Field Name="Purchase_Line_Expected_Receipt_Date">
+          <DataField>Purchase_Line_Expected_Receipt_Date</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
+</Report>
