@@ -226,9 +226,11 @@ report 50091 "EDI Invoic 45"
     end;
 
     local procedure GetHHMM(): Text
+    var
+        CurrentDateTime: DateTime;
     begin
-        DateTime_dn := DateTime_dn.Now;
-        EXIT(DateTime_dn.ToString('hhmm'));
+        CurrentDateTime := CURRENTDATETIME;
+        EXIT(FORMAT(CurrentDateTime, 0, '<Hour24,2><Minute,2>'));
     end;
 
     local procedure GetShipmentInfos()
@@ -260,7 +262,7 @@ report 50091 "EDI Invoic 45"
 
     local procedure CreateDocumentList()
     begin
-        StringBuilder_dn := StringBuilder_dn.StringBuilder();
+        //StringBuilder_dn := StringBuilder_dn.StringBuilder(); TODO: Pürfen
         StringBuilder_dn.Clear();
 
         //Satzart 000: Interchange-Header (1 x pro Übertragungsdatei)
@@ -326,7 +328,7 @@ report 50091 "EDI Invoic 45"
         //ServerTempFileName := FileManagement.ServerTempFileName('.inh');
 
         StreamWriter_dn := StreamWriter_dn.StreamWriter(stratEdiSetup."stratEDI Export Path" + ServerTempFileName);
-        StreamWriter_dn.WriteLine(StringBuilder_dn.ToString());
+        StreamWriter_dn.WriteLine(StringBuilder_dn.ToText());
         StreamWriter_dn.Close();
 
         //Protokoll Einträge ändern

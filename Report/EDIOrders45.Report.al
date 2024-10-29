@@ -132,10 +132,10 @@ report 50093 "EDI Orders 45"
     end;
 
     var
-        StringBuilder_dn: DotNet StringBuilder;
-        String_dn: DotNet String;
-        DateTime_dn: DotNet DateTime;
-        StreamWriter_dn: DotNet StreamWriter;
+        StringBuilder_dn: TextBuilder;
+        String_dn: Codeunit DotNet_String;
+        DateTime_dn: DateTime;
+        StreamWriter_dn: Codeunit DotNet_StreamWriter;
         TextLine: Text;
         ILNIdSender: Text[35];
         ILNIdReceiver: Text[35];
@@ -183,15 +183,16 @@ report 50093 "EDI Orders 45"
     end;
 
     local procedure GetHHMM(): Text
+    var
+        CurrentDateTime: DateTime;
     begin
-
-        DateTime_dn := DateTime_dn.Now;
-        EXIT(DateTime_dn.ToString('hhmm'));
+        CurrentDateTime := CURRENTDATETIME;
+        EXIT(FORMAT(CurrentDateTime, 0, '<Hour24,2><Minute,2>'));
     end;
 
     local procedure CreateDocumentList()
     begin
-        StringBuilder_dn := StringBuilder_dn.StringBuilder();
+        // StringBuilder_dn := StringBuilder_dn.StringBuilder(); TODO: Prüfen
         StringBuilder_dn.Clear();
 
         //Satzart 000: Interchange-Header (1 x pro Übertragungsdatei)
@@ -234,7 +235,7 @@ report 50093 "EDI Orders 45"
         //ServerTempFileName := FileManagement.ServerTempFileName('.inh');
 
         StreamWriter_dn := StreamWriter_dn.StreamWriter(stratEdiSetup."stratEDI Export Path" + ServerTempFileName);
-        StreamWriter_dn.WriteLine(StringBuilder_dn.ToString());
+        StreamWriter_dn.WriteLine(StringBuilder_dn.ToText());
         StreamWriter_dn.Close();
 
         //Protokoll Einträge ändern

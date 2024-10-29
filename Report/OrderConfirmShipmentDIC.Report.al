@@ -1504,7 +1504,7 @@ report 50008 "Order Confirm. Shipment DIC"
         ArchiveManagement: Codeunit "5063";
         FormatDocument: Codeunit "Format Document";
         SalesPostPrepmt: Codeunit "442";
-        DimMgt: Codeunit "Dimension Management";
+        DimMgt: Codeunit DimensionManagement;
         CustAddr: array[8] of Text[50];
         ShipToAddr: array[8] of Text[50];
         CompanyAddr: array[8] of Text[50];

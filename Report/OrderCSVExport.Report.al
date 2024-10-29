@@ -83,7 +83,7 @@ report 50094 "Order CSV Export"
         tempFileName := FileManagement.ServerTempFileName('.csv');
 
         StreamWriter_dn := StreamWriter_dn.StreamWriter(tempFileName);
-        StreamWriter_dn.WriteLine(StringBuilder_dn.ToString());
+        StreamWriter_dn.WriteLine(StringBuilder_dn.ToText());
         StreamWriter_dn.Close();
 
         ToFile := 'LieferAvis.csv';
@@ -97,18 +97,17 @@ report 50094 "Order CSV Export"
     end;
 
     var
-        StringBuilder_dn: DotNet StringBuilder;
-        String_dn: DotNet String;
-        DateTime_dn: DotNet DateTime;
-        StreamWriter_dn: DotNet StreamWriter;
+        StringBuilder_dn: TextBuilder;
+        String_dn: Codeunit DotNet_String;
+        DateTime_dn: DateTime;
+        StreamWriter_dn: Codeunit DotNet_StreamWriter;
         TextLine: Text;
         FileManagement: Codeunit "File Management";
 
     local procedure CreateCsvDocument()
     begin
-        StringBuilder_dn := StringBuilder_dn.StringBuilder();
+        //StringBuilder_dn := StringBuilder_dn. StringBuilder(); TODO: Prüfen
         StringBuilder_dn.Clear();
-
         StringBuilder_dn.AppendLine
         (
         '"Unser Konto";"Firma";"Ihr Konto";"Filiale";"Bestell-Nr.";"Liefer-Datum";"Bestell-Datum";"Woche";"Artikel";"Ihr-Artikel";"Bezeichnung";"Inhalt";"Bes-Menge";"Liefer-Menge";"Status";"PLUKD"'

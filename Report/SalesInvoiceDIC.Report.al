@@ -16,7 +16,7 @@ report 50074 "Sales - Invoice DIC"
 
     dataset
     {
-        dataitem("Sales Invoice Header"; "Sales Invoice Header")
+        dataitem(Header; "Sales Invoice Header")
         {
             DataItemTableView = SORTING("No.");
             RequestFilterFields = "No.", "Sell-to Customer No.", "No. Printed";
@@ -160,19 +160,19 @@ report 50074 "Sales - Invoice DIC"
                     column(ShipmentMethodDescription; ShipmentMethod.Description)
                     {
                     }
-                    column(BillToCustNo_SalesInvHdr; "Sales Invoice Header"."Bill-to Customer No.")
+                    column(BillToCustNo_SalesInvHdr; Header."Bill-to Customer No.")
                     {
                     }
-                    column(PostingDate_SalesInvHdr; FORMAT("Sales Invoice Header"."Posting Date", 0, 4))
+                    column(PostingDate_SalesInvHdr; FORMAT(Header."Posting Date", 0, 4))
                     {
                     }
                     column(VATNoText; VATNoText)
                     {
                     }
-                    column(VATRegNo_SalesInvHeader; "Sales Invoice Header"."VAT Registration No.")
+                    column(VATRegNo_SalesInvHeader; Header."VAT Registration No.")
                     {
                     }
-                    column(DueDate_SalesInvHeader; FORMAT("Sales Invoice Header"."Due Date", 0, 4))
+                    column(DueDate_SalesInvHeader; FORMAT(Header."Due Date", 0, 4))
                     {
                     }
                     column(SalesPersonText; SalesPersonText)
@@ -184,13 +184,13 @@ report 50074 "Sales - Invoice DIC"
                     column(ReferenceText; ReferenceText)
                     {
                     }
-                    column(YourReference_SalesInvHdr; "Sales Invoice Header"."Your Reference")
+                    column(YourReference_SalesInvHdr; Header."Your Reference")
                     {
                     }
                     column(OrderNoText; OrderNoText)
                     {
                     }
-                    column(OrderNo_SalesInvHeader; "Sales Invoice Header"."Order No.")
+                    column(OrderNo_SalesInvHeader; Header."Order No.")
                     {
                     }
                     column(CustAddr7; CustAddr[7])
@@ -205,16 +205,16 @@ report 50074 "Sales - Invoice DIC"
                     column(CompanyAddr6; CompanyAddr[6])
                     {
                     }
-                    column(DocDate_SalesInvoiceHdr; "Sales Invoice Header"."Document Date")
+                    column(DocDate_SalesInvoiceHdr; Header."Document Date")
                     {
                     }
-                    column(PricesInclVAT_SalesInvHdr; "Sales Invoice Header"."Prices Including VAT")
+                    column(PricesInclVAT_SalesInvHdr; Header."Prices Including VAT")
                     {
                     }
                     column(OutputNo; OutputNo)
                     {
                     }
-                    column(PricesInclVATYesNo; FORMAT("Sales Invoice Header"."Prices Including VAT"))
+                    column(PricesInclVATYesNo; FORMAT(Header."Prices Including VAT"))
                     {
                     }
                     column(PageCaption; PageCaptionCap)
@@ -253,13 +253,13 @@ report 50074 "Sales - Invoice DIC"
                     column(RegNoCaption; CompanyInfo.GetRegistrationNumberLbl)
                     {
                     }
-                    column(BillToCustNo_SalesInvHdrCaption; "Sales Invoice Header".FIELDCAPTION("Bill-to Customer No."))
+                    column(BillToCustNo_SalesInvHdrCaption; Header.FIELDCAPTION("Bill-to Customer No."))
                     {
                     }
-                    column(PricesInclVAT_SalesInvHdrCaption; "Sales Invoice Header".FIELDCAPTION("Prices Including VAT"))
+                    column(PricesInclVAT_SalesInvHdrCaption; Header.FIELDCAPTION("Prices Including VAT"))
                     {
                     }
-                    column(SellToCustNo_SalesInvHdr; "Sales Invoice Header"."Sell-to Customer No.")
+                    column(SellToCustNo_SalesInvHdr; Header."Sell-to Customer No.")
                     {
                     }
                     column(ShipToAddr1; ShipToAddr[1])
@@ -289,16 +289,16 @@ report 50074 "Sales - Invoice DIC"
                     column(ShipToAddressCaption; ShipToAddressCaptionLbl)
                     {
                     }
-                    column(SalesInvHdr_ExternalDocumentNo; "Sales Invoice Header"."External Document No.")
+                    column(SalesInvHdr_ExternalDocumentNo; Header."External Document No.")
                     {
                     }
-                    column(SalesInvHdr_PrintShipmentInfo; "Sales Invoice Header"."Print Shipment Info On Invoice")
+                    column(SalesInvHdr_PrintShipmentInfo; Header."Print Shipment Info On Invoice")
                     {
                     }
-                    column(SalesInvHdr_ExternalDocumentNo_Lbl; STRSUBSTNO(Text018, "Sales Invoice Header"."External Document No."))
+                    column(SalesInvHdr_ExternalDocumentNo_Lbl; STRSUBSTNO(Text018, Header."External Document No."))
                     {
                     }
-                    column(SalesInvHdr_Shipment_Lbl; STRSUBSTNO(Text019, "Sales Invoice Header"."Order No.", "Sales Invoice Header"."Shipment Date"))
+                    column(SalesInvHdr_Shipment_Lbl; STRSUBSTNO(Text019, Header."Order No.", Header."Shipment Date"))
                     {
                     }
                     column(CompanyInfo_GlnValue; GlnValue)
@@ -306,7 +306,7 @@ report 50074 "Sales - Invoice DIC"
                     }
                     dataitem(DimensionLoop1; Integer)
                     {
-                        DataItemLinkReference = "Sales Invoice Header";
+                        DataItemLinkReference = Header;
                         DataItemTableView = SORTING(Number)
                                             WHERE(Number = FILTER(1 ..));
                         column(DimText; DimText)
@@ -356,7 +356,7 @@ report 50074 "Sales - Invoice DIC"
                     dataitem("Sales Invoice Line"; "Sales Invoice Line")
                     {
                         DataItemLink = "Document No." = FIELD("No.");
-                        DataItemLinkReference = "Sales Invoice Header";
+                        DataItemLinkReference = Header;
                         DataItemTableView = SORTING("Document No.", "Line No.");
                         column(LineAmt_SalesInvoiceLine; "Line Amount")
                         {
@@ -402,12 +402,12 @@ report 50074 "Sales - Invoice DIC"
                         }
                         column(TotalSubTotal; TotalSubTotal)
                         {
-                            AutoFormatExpression = "Sales Invoice Header"."Currency Code";
+                            AutoFormatExpression = Header."Currency Code";
                             AutoFormatType = 1;
                         }
                         column(TotalInvoiceDiscountAmt; TotalInvoiceDiscountAmt)
                         {
-                            AutoFormatExpression = "Sales Invoice Header"."Currency Code";
+                            AutoFormatExpression = Header."Currency Code";
                             AutoFormatType = 1;
                         }
                         column(TotalText; TotalText)
@@ -420,7 +420,7 @@ report 50074 "Sales - Invoice DIC"
                         }
                         column(TotalAmount; TotalAmount)
                         {
-                            AutoFormatExpression = "Sales Invoice Header"."Currency Code";
+                            AutoFormatExpression = Header."Currency Code";
                             AutoFormatType = 1;
                         }
                         column(AmountIncludingVATAmount; "Amount Including VAT" - Amount)
@@ -444,15 +444,15 @@ report 50074 "Sales - Invoice DIC"
                         }
                         column(TotalAmountInclVAT; TotalAmountInclVAT)
                         {
-                            AutoFormatExpression = "Sales Invoice Header"."Currency Code";
+                            AutoFormatExpression = Header."Currency Code";
                             AutoFormatType = 1;
                         }
                         column(TotalAmountVAT; TotalAmountVAT)
                         {
-                            AutoFormatExpression = "Sales Invoice Header"."Currency Code";
+                            AutoFormatExpression = Header."Currency Code";
                             AutoFormatType = 1;
                         }
-                        column(VATBaseDisc_SalesInvHdr; "Sales Invoice Header"."VAT Base Discount %")
+                        column(VATBaseDisc_SalesInvHdr; Header."VAT Base Discount %")
                         {
                             AutoFormatType = 1;
                         }
@@ -614,7 +614,7 @@ report 50074 "Sales - Invoice DIC"
 
                                 IF ItemTranslation.GET(TempPostedAsmLine."No.",
                                      TempPostedAsmLine."Variant Code",
-                                     "Sales Invoice Header"."Language Code")
+                                     Header."Language Code")
                                 THEN
                                     TempPostedAsmLine.Description := ItemTranslation.Description;
                             end;
@@ -689,22 +689,22 @@ report 50074 "Sales - Invoice DIC"
                         }
                         column(VATAmountLineVATAmount; VATAmountLine."VAT Amount")
                         {
-                            AutoFormatExpression = "Sales Invoice Header"."Currency Code";
+                            AutoFormatExpression = Header."Currency Code";
                             AutoFormatType = 1;
                         }
                         column(VATAmountLineLineAmount; VATAmountLine."Line Amount")
                         {
-                            AutoFormatExpression = "Sales Invoice Header"."Currency Code";
+                            AutoFormatExpression = Header."Currency Code";
                             AutoFormatType = 1;
                         }
                         column(VATAmtLineInvDiscBaseAmt; VATAmountLine."Inv. Disc. Base Amount")
                         {
-                            AutoFormatExpression = "Sales Invoice Header"."Currency Code";
+                            AutoFormatExpression = Header."Currency Code";
                             AutoFormatType = 1;
                         }
                         column(VATAmtLineInvDiscountAmt; VATAmountLine."Invoice Discount Amount")
                         {
-                            AutoFormatExpression = "Sales Invoice Header"."Currency Code";
+                            AutoFormatExpression = Header."Currency Code";
                             AutoFormatType = 1;
                         }
                         column(VATAmountLineVAT; VATAmountLine."VAT %")
@@ -757,7 +757,7 @@ report 50074 "Sales - Invoice DIC"
                         }
                         column(VATClauseAmount; VATAmountLine."VAT Amount")
                         {
-                            AutoFormatExpression = "Sales Invoice Header"."Currency Code";
+                            AutoFormatExpression = Header."Currency Code";
                             AutoFormatType = 1;
                         }
                         column(VATClausesCaption; VATClausesCap)
@@ -775,7 +775,7 @@ report 50074 "Sales - Invoice DIC"
                             VATAmountLine.GetLine(Number);
                             IF NOT VATClause.GET(VATAmountLine."VAT Clause Code") THEN
                                 CurrReport.SKIP;
-                            VATClause.TranslateDescription("Sales Invoice Header"."Language Code");
+                            VATClause.TranslateDescription(Header."Language Code");
                         end;
 
                         trigger OnPreDataItem()
@@ -815,18 +815,18 @@ report 50074 "Sales - Invoice DIC"
                             VATAmountLine.GetLine(Number);
                             VALVATBaseLCY :=
                               VATAmountLine.GetBaseLCY(
-                                "Sales Invoice Header"."Posting Date", "Sales Invoice Header"."Currency Code",
-                                "Sales Invoice Header"."Currency Factor");
+                                Header."Posting Date", Header."Currency Code",
+                                Header."Currency Factor");
                             VALVATAmountLCY :=
                               VATAmountLine.GetAmountLCY(
-                                "Sales Invoice Header"."Posting Date", "Sales Invoice Header"."Currency Code",
-                                "Sales Invoice Header"."Currency Factor");
+                                Header."Posting Date", Header."Currency Code",
+                                Header."Currency Factor");
                         end;
 
                         trigger OnPreDataItem()
                         begin
                             IF (NOT GLSetup."Print VAT specification in LCY") OR
-                               ("Sales Invoice Header"."Currency Code" = '')
+                               (Header."Currency Code" = '')
                             THEN
                                 CurrReport.BREAK;
 
@@ -838,8 +838,8 @@ report 50074 "Sales - Invoice DIC"
                             ELSE
                                 VALSpecLCYHeader := Text007 + FORMAT(GLSetup."LCY Code");
 
-                            CurrExchRate.FindCurrency("Sales Invoice Header"."Posting Date", "Sales Invoice Header"."Currency Code", 1);
-                            CalculatedExchRate := ROUND(1 / "Sales Invoice Header"."Currency Factor" * CurrExchRate."Exchange Rate Amount", 0.000001);
+                            CurrExchRate.FindCurrency(Header."Posting Date", Header."Currency Code", 1);
+                            CalculatedExchRate := ROUND(1 / Header."Currency Factor" * CurrExchRate."Exchange Rate Amount", 0.000001);
                             VALExchRate := STRSUBSTNO(Text009, CalculatedExchRate, CurrExchRate."Exchange Rate Amount");
                         end;
                     }
@@ -861,7 +861,7 @@ report 50074 "Sales - Invoice DIC"
                         var
                             PaymentServiceSetup: Record "1060";
                         begin
-                            PaymentServiceSetup.CreateReportingArgs(PaymentReportingArgument, "Sales Invoice Header");
+                            PaymentServiceSetup.CreateReportingArgs(PaymentReportingArgument, Header);
                             IF ISEMPTY THEN
                                 CurrReport.BREAK;
                         end;
@@ -875,7 +875,7 @@ report 50074 "Sales - Invoice DIC"
                     {
                         DataItemTableView = SORTING(Number)
                                             WHERE(Number = CONST(1));
-                        column(SellToCustNo_SalesInvHdrCaption; "Sales Invoice Header".FIELDCAPTION("Sell-to Customer No."))
+                        column(SellToCustNo_SalesInvHdrCaption; Header.FIELDCAPTION("Sell-to Customer No."))
                         {
                         }
 
@@ -928,7 +928,7 @@ report 50074 "Sales - Invoice DIC"
                 trigger OnPostDataItem()
                 begin
                     IF NOT CurrReport.PREVIEW THEN
-                        CODEUNIT.RUN(CODEUNIT::"Sales Inv.-Printed", "Sales Invoice Header");
+                        CODEUNIT.RUN(CODEUNIT::"Sales Inv.-Printed", Header);
                 end;
 
                 trigger OnPreDataItem()
@@ -946,8 +946,8 @@ report 50074 "Sales - Invoice DIC"
             begin
                 //CurrReport.LANGUAGE := Language.GetLanguageID("Language Code"); TODO: CHECK
 
-                FormatAddressFields("Sales Invoice Header");
-                FormatDocumentFields("Sales Invoice Header");
+                FormatAddressFields(Header);
+                FormatDocumentFields(Header);
 
                 IF NOT Cust.GET("Bill-to Customer No.") THEN
                     CLEAR(Cust);
@@ -1198,8 +1198,8 @@ report 50074 "Sales - Invoice DIC"
             IF SalesShipmentHeader.GET("Sales Invoice Line"."Shipment No.") THEN
                 EXIT(SalesShipmentHeader."Posting Date");
 
-        IF "Sales Invoice Header"."Order No." = '' THEN
-            EXIT("Sales Invoice Header"."Posting Date");
+        IF Header."Order No." = '' THEN
+            EXIT(Header."Posting Date");
 
         CASE "Sales Invoice Line".Type OF
             "Sales Invoice Line".Type::Item:
@@ -1225,10 +1225,10 @@ report 50074 "Sales - Invoice DIC"
             SalesShipmentBuffer.CALCSUMS(Quantity);
             IF SalesShipmentBuffer.Quantity <> "Sales Invoice Line".Quantity THEN BEGIN
                 SalesShipmentBuffer.DELETEALL;
-                EXIT("Sales Invoice Header"."Posting Date");
+                EXIT(Header."Posting Date");
             END;
         END ELSE
-            EXIT("Sales Invoice Header"."Posting Date");
+            EXIT(Header."Posting Date");
     end;
 
     [Scope('Internal')]
@@ -1242,7 +1242,7 @@ report 50074 "Sales - Invoice DIC"
         TotalQuantity := SalesInvoiceLine2."Quantity (Base)";
         ValueEntry.SETCURRENTKEY("Document No.");
         ValueEntry.SETRANGE("Document No.", SalesInvoiceLine2."Document No.");
-        ValueEntry.SETRANGE("Posting Date", "Sales Invoice Header"."Posting Date");
+        ValueEntry.SETRANGE("Posting Date", Header."Posting Date");
         ValueEntry.SETRANGE("Item Charge No.", '');
         ValueEntry.SETFILTER("Entry No.", '%1..', FirstValueEntryNo);
         IF ValueEntry.FIND('-') THEN
@@ -1274,8 +1274,8 @@ report 50074 "Sales - Invoice DIC"
     begin
         TotalQuantity := 0;
         SalesInvoiceHeader.SETCURRENTKEY("Order No.");
-        SalesInvoiceHeader.SETFILTER("No.", '..%1', "Sales Invoice Header"."No.");
-        SalesInvoiceHeader.SETRANGE("Order No.", "Sales Invoice Header"."Order No.");
+        SalesInvoiceHeader.SETFILTER("No.", '..%1', Header."No.");
+        SalesInvoiceHeader.SETRANGE("Order No.", Header."Order No.");
         IF SalesInvoiceHeader.FIND('-') THEN
             REPEAT
                 SalesInvoiceLine2.SETRANGE("Document No.", SalesInvoiceHeader."No.");
@@ -1290,7 +1290,7 @@ report 50074 "Sales - Invoice DIC"
             UNTIL SalesInvoiceHeader.NEXT = 0;
 
         SalesShipmentLine.SETCURRENTKEY("Order No.", "Order Line No.");
-        SalesShipmentLine.SETRANGE("Order No.", "Sales Invoice Header"."Order No.");
+        SalesShipmentLine.SETRANGE("Order No.", Header."Order No.");
         SalesShipmentLine.SETRANGE("Order Line No.", SalesInvoiceLine."Line No.");
         SalesShipmentLine.SETRANGE("Line No.", SalesInvoiceLine."Line No.");
         SalesShipmentLine.SETRANGE(Type, SalesInvoiceLine.Type);
@@ -1300,7 +1300,7 @@ report 50074 "Sales - Invoice DIC"
 
         IF SalesShipmentLine.FIND('-') THEN
             REPEAT
-                IF "Sales Invoice Header"."Get Shipment Used" THEN
+                IF Header."Get Shipment Used" THEN
                     CorrectShipment(SalesShipmentLine);
                 IF ABS(SalesShipmentLine.Quantity) <= ABS(TotalQuantity - SalesInvoiceLine.Quantity) THEN
                     TotalQuantity := TotalQuantity - SalesShipmentLine.Quantity
@@ -1364,7 +1364,7 @@ report 50074 "Sales - Invoice DIC"
 
     local procedure DocumentCaption(): Text[250]
     begin
-        IF "Sales Invoice Header"."Prepayment Invoice" THEN
+        IF Header."Prepayment Invoice" THEN
             EXIT(Text010);
         EXIT(Text004);
     end;
@@ -1525,7 +1525,7 @@ report 50074 "Sales - Invoice DIC"
                 TempLineFeeNoteOnReportHist.INSERT;
             UNTIL LineFeeNoteOnReportHist.NEXT = 0;
         END ELSE BEGIN
-            LineFeeNoteOnReportHist.SETRANGE("Language Code", Language.GetUserLanguage);
+            LineFeeNoteOnReportHist.SETRANGE("Language Code", Header."Language Code");
             IF LineFeeNoteOnReportHist.FINDSET THEN
                 REPEAT
                     TempLineFeeNoteOnReportHist.INIT;
