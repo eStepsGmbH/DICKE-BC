@@ -35,5 +35,5 @@
   ],
   "contextSensitiveHelpUrl": "https://esteps.de/kontakt",
   "runtime":"13.0",
-  "target": "Cloud"
+  "target": "OnPrem"
 }

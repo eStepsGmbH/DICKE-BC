@@ -356,7 +356,7 @@ page 50070 "Sales Invoice Lines DIC"
     end;
 
     var
-        SalesInvoiceHdr: Record "112";
+        SalesInvoiceHdr: Record "Sales Invoice Header";
         TempSalesInvLine: Record "113" temporary;
         DocNo: Code[20];
 
