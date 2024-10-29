@@ -12,7 +12,7 @@ report 50080 "Sales - Shipment DIC"
 
     dataset
     {
-        dataitem(DataItem3595; Table110)
+        dataitem("Sales Shipment Header"; "Sales Shipment Header")
         {
             DataItemTableView = SORTING("No.");
             RequestFilterFields = "No.", "Sell-to Customer No.", "No. Printed";
@@ -214,11 +214,11 @@ report 50080 "Sales - Shipment DIC"
                                 CurrReport.BREAK;
                         end;
                     }
-                    dataitem(DataItem2502; Table111)
+                    dataitem("Sales Shipment Line"; "Sales Shipment Line")
                     {
-                        DataItemLink = Document No.=FIELD("No.");
+                        DataItemLink = "Document No." = FIELD("No.");
                         DataItemLinkReference = "Sales Shipment Header";
-                        DataItemTableView = SORTING(Document No., Line No.);
+                        DataItemTableView = SORTING("Document No.", "Line No.");
                         column(Description_SalesShptLine; Description)
                         {
                         }
@@ -339,7 +339,6 @@ report 50080 "Sales - Shipment DIC"
                             }
                             column(PostedAsmLineUOMCode; GetUnitOfMeasureDescr(PostedAsmLine."Unit of Measure Code"))
                             {
-                                DecimalPlaces = 0 : 5;
                             }
 
                             trigger OnAfterGetRecord()
@@ -538,7 +537,7 @@ report 50080 "Sales - Shipment DIC"
                         begin
                             IF TrackingSpecCount = 0 THEN
                                 CurrReport.BREAK;
-                            CurrReport.NEWPAGE;
+                            CurrReport.NewPage();
                             SETRANGE(Number, 1, TrackingSpecCount);
                             TrackingSpecBuffer.SETCURRENTKEY("Source ID", "Source Type", "Source Subtype", "Source Batch Name",
                               "Source Prod. Order Line", "Source Ref. No.");
@@ -587,7 +586,7 @@ report 50080 "Sales - Shipment DIC"
                 TotalPostedAsmLineQty := 0;
                 //Dicke <<<
 
-                CurrReport.LANGUAGE := Language.GetLanguageID("Language Code");
+                // CurrReport.Language := "Sales Shipment Header"."Language Code"; TODO: Prüfen
 
                 FormatAddressFields("Sales Shipment Header");
                 FormatDocumentFields("Sales Shipment Header");
@@ -684,19 +683,19 @@ report 50080 "Sales - Shipment DIC"
         CompanyInfo1: Record "Company Information";
         CompanyInfo2: Record "Company Information";
         CompanyInfo3: Record "Company Information";
-        SalesSetup: Record "311";
-        DimSetEntry1: Record "480";
-        DimSetEntry2: Record "480";
-        Language: Record "8";
+        SalesSetup: Record "Sales & Receivables Setup";
+        DimSetEntry1: Record "Dimension Set Entry";
+        DimSetEntry2: Record "Dimension Set Entry";
+        LanguageRec: Record Language;
         TrackingSpecBuffer: Record "336" temporary;
         PostedAsmHeader: Record "910";
         PostedAsmLine: Record "911";
         RespCenter: Record "5714";
         ItemTrackingAppendix: Report "6521";
-        FormatAddr: Codeunit "Format Address";
-        FormatDocument: Codeunit "368";
-        SegManagement: Codeunit "5051";
-        ItemTrackingDocMgt: Codeunit "6503";
+        FormatAdressCodeunit: Codeunit "Format Address";
+        FormatDocument: Codeunit "Format Document";
+        SegManagement: Codeunit SegManagement;
+        ItemTrackingDocMgt: Codeunit "Item Tracking Doc. Management";
         CustAddr: array[8] of Text[50];
         ShipToAddr: array[8] of Text[50];
         CompanyAddr: array[8] of Text[50];
@@ -721,7 +720,6 @@ report 50080 "Sales - Shipment DIC"
         ShowTotal: Boolean;
         ShowGroup: Boolean;
         TotalQty: Decimal;
-        [InDataSet]
         LogInteractionEnable: Boolean;
         DisplayAssemblyInformation: Boolean;
         AsmHeaderExists: Boolean;

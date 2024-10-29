@@ -285,9 +285,9 @@ report 55073 "FL Berechnung RungeVA"
                 //SalesInvoiceLineFilter := "Sales Invoice Line".GETFILTERS;
             end;
         }
-        dataitem(DataItem50070; Table32)
+        dataitem("Item Ledger Entry"; "Item Ledger Entry")
         {
-            DataItemTableView = SORTING("Item No.", Entry Type, Location Code, Posting Date, Document Type);
+            DataItemTableView = SORTING("Item No.", "Entry Type", "Location Code", "Posting Date", "Document Type");
             RequestFilterFields = "Posting Date";
         }
     }

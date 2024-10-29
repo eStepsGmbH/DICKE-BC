@@ -316,7 +316,7 @@ report 50084 "EDI Orders Export"
         l_PositionsZaehler: Integer;
         ILNNo_text: Code[20];
         ReceiptILNo_text: Code[20];
-        SalesSetup_rec: Record "311";
+        SalesSetup_rec: Record "Sales & Receivables Setup";
         l_UNH_Nummer: Integer;
         Text001: Label 'Datei %1 konnte nicht erstellt werden!';
         ServerFileNameExcel: Text;

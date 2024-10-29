@@ -284,7 +284,7 @@ report 50077 "Import GUO Daten"
         ServerFileNameExcel: Text;
         ExcelBuffer: Record "370" temporary;
         RowNo: Integer;
-        SalesReceivablesSetup: Record "311";
+        SalesReceivablesSetup: Record "Sales & Receivables Setup";
         MultiTemp_trec: Record "50008" temporary;
         ImportOption: Option Verkauf,"Verkauf u. Einkauf";
         BookPurchaseOrder: Boolean;

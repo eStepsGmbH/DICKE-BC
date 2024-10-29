@@ -1266,7 +1266,7 @@ report 50008 "Order Confirm. Shipment DIC"
                 var
                     PrepmtSalesLine: Record "Sales Line" temporary;
                     TempSalesLine: Record "Sales Line" temporary;
-                    SalesPost: Codeunit "80";
+                    SalesPost: Codeunit "Sales Post";
                 begin
                     CLEAR(SalesLine);
                     CLEAR(SalesPost);
@@ -1318,7 +1318,7 @@ report 50008 "Order Confirm. Shipment DIC"
                 trigger OnPostDataItem()
                 begin
                     IF Print THEN
-                      CODEUNIT.RUN(CODEUNIT::"Sales-Printed","Sales Header");
+                      "Sales-Printed".RUN("Sales Header");
                 end;
 
                 trigger OnPreDataItem()
@@ -1482,26 +1482,26 @@ report 50008 "Order Confirm. Shipment DIC"
         CompanyInfo: Record "Company Information";
         CompanyInfo1: Record "Company Information";
         CompanyInfo2: Record "Company Information";
-        SalesSetup: Record "311";
+        SalesSetup: Record "Sales & Receivables Setup";
         VATAmountLine: Record "290" temporary;
         PrepmtVATAmountLine: Record "290" temporary;
         PrepmtVATAmountLineDeduct: Record "290" temporary;
         SalesLine: Record "Sales Line" temporary;
-        DimSetEntry1: Record "480";
-        DimSetEntry2: Record "480";
-        TempPrepmtDimSetEntry: Record "480" temporary;
+        DimSetEntry1: Record "Dimension Set Entry";
+        DimSetEntry2: Record "Dimension Set Entry";
+        TempPrepmtDimSetEntry: Record "Dimension Set Entry" temporary;
         PrepmtInvBuf: Record "461" temporary;
         RespCenter: Record "5714";
-        Language: Record "8";
+        Language: Record Language;
         CurrExchRate: Record "330";
         AsmHeader: Record "900";
         AsmLine: Record "901";
-        FormatAddr: Codeunit 365;
-        SegManagement: Codeunit 5051;
-        ArchiveManagement: Codeunit "5063";
-        FormatDocument: Codeunit "368";
-        SalesPostPrepmt: Codeunit "442";
-        DimMgt: Codeunit "408";
+        // FormatAddr: Codeunit "Format Address";
+        // SegManagement: Codeunit "SegManagement";
+        // ArchiveManagement: Codeunit "5063";
+        // FormatDocument: Codeunit "Format Document";
+        // SalesPostPrepmt: Codeunit "442";
+        // DimMgt: Codeunit "408";
         CustAddr: array [8] of Text[50];
         ShipToAddr: array [8] of Text[50];
         CompanyAddr: array [8] of Text[50];

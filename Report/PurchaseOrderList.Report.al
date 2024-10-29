@@ -217,7 +217,7 @@ report 50076 "Purchase Order List"
 
     trigger OnPreReport()
     var
-        SalesSetup_lrec: Record "311";
+        SalesSetup_lrec: Record "Sales & Receivables Setup";
     begin
 
         IF DataExport_req THEN BEGIN

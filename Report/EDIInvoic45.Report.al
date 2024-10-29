@@ -667,8 +667,6 @@ report 50091 "EDI Invoic 45"
         UnitOfMeasureCode: Code[3];
     begin
         IF NOT Item_lrec.GET(SalesInvoiceLine_par."No.") THEN;
-
-        // Feld 500-22 TODO: 'PCE'= Stück, 'KGM' = Kilogramm
         UnitOfMeasureCode := 'PCE';
         IF COPYSTR(SalesInvoiceLine_par."Unit of Measure", 1, 2) = 'KG' THEN
             UnitOfMeasureCode := 'KGM';

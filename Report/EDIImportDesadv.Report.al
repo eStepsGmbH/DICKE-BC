@@ -365,7 +365,7 @@ report 50088 "EDI Import Desadv"
         ExcelBuffer: Record "370" temporary;
         RowNo: Integer;
         SalesHeaderCheckDigit: Code[1];
-        SalesReceivablesSetup: Record "311";
+        SalesReceivablesSetup: Record "Sales & Receivables Setup";
         MultiTemp_trec: Record "50008" temporary;
         BookPurchaseOrder: Boolean;
         ImportOption: Option Verkauf,"Verkauf u. Einkauf";
@@ -375,7 +375,7 @@ report 50088 "EDI Import Desadv"
     procedure ProcessDesadvLine()
     var
         ItemNo_lcod: Code[20];
-        SalesReceivablesSetup_lrec: Record "311";
+        SalesReceivablesSetup_lrec: Record "Sales & Receivables Setup";
         EdiBookingTolerance_ldec: Decimal;
         ToleranceValue_ldec: Decimal;
         ArchiveManagement_lcu: Codeunit "5063";

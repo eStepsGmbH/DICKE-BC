@@ -893,7 +893,7 @@ report 50075 "Sales - Credit Memo DIC"
         PageCaptionCap: Label 'Page %1 of %2';
         GLSetup: Record "98";
         RespCenter: Record "5714";
-        SalesSetup: Record "311";
+        SalesSetup: Record "Sales & Receivables Setup";
         SalesPurchPerson: Record "13";
         CompanyInfo: Record "Company Information";
         CompanyInfo1: Record "Company Information";
@@ -901,14 +901,14 @@ report 50075 "Sales - Credit Memo DIC"
         CompanyInfo3: Record "Company Information";
         VATAmountLine: Record "290" temporary;
         VATClause: Record "560";
-        DimSetEntry1: Record "480";
-        DimSetEntry2: Record "480";
-        Language: Record "8";
+        DimSetEntry1: Record "Dimension Set Entry";
+        DimSetEntry2: Record "Dimension Set Entry";
+        Language: Record "Language";
         SalesShipmentBuffer: Record "7190" temporary;
         CurrExchRate: Record "330";
         FormatAddr: Codeunit "Format Address";
-        FormatDocument: Codeunit "368";
-        SegManagement: Codeunit "5051";
+        FormatDocument: Codeunit "Format Document";
+        SegManagement: Codeunit SegManagement;
         CustAddr: array[8] of Text[50];
         ShipToAddr: array[8] of Text[50];
         CompanyAddr: array[8] of Text[50];

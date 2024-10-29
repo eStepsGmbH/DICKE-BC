@@ -10,9 +10,9 @@ report 50079 "Sales Line List"
 
     dataset
     {
-        dataitem(DataItem50070; Table37)
+        dataitem("Sales Line"; "Sales Line")
         {
-            DataItemTableView = SORTING(Type, No., Variant Code, Drop Shipment, Location Code, Document Type, Shipment Date)
+            DataItemTableView = SORTING(Type, "No.", "Variant Code", "Drop Shipment", "Location Code", "Document Type", "Shipment Date")
                                 WHERE(Type = CONST(Item));
             RequestFilterFields = "Shipment Date", "Document No.", "No.", "Sell-to Customer No.", "Purchasing Code";
 
@@ -167,7 +167,7 @@ report 50079 "Sales Line List"
         ExcelBuffer.WriteSheet('TheHEADER', COMPANYNAME, USERID);
         ExcelBuffer.CloseBook;
         ExcelBuffer.OpenExcel;
-        ExcelBuffer.GiveUserControl;
+        // ExcelBuffer.GiveUserControl;
     end;
 }
 
