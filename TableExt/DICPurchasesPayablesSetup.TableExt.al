@@ -1,4 +1,4 @@
-tableextension 50042 tableextension50042 extends "Purchases & Payables Setup"
+tableextension 50042 "DIC Purchases & Payables Setup" extends "Purchases & Payables Setup"
 {
     fields
     {
